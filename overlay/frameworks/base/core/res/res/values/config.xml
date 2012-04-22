@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+** Copyright 2009, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+
+<!-- These resources are around just to allow their values to be customized
+     for different hardware and product builds. -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <bool name="config_sf_limitedAlpha">true</bool>
+
+    <string-array translatable="false" name="config_tether_usb_regexs">
+        <item>"usb0"</item>
+    </string-array>
+
+    <string-array translatable="false" name="config_tether_bluetooth_regexs">
+        <item>"bnep\\d"</item>
+    </string-array>
+
+     <!-- Array of ConnectivityManager.TYPE_xxxx values allowable for tethering -->
+    <!-- Common options are [1, 4] for TYPE_WIFI and TYPE_MOBILE_DUN or
+    <!== [0,1,5,7] for TYPE_MOBILE, TYPE_WIFI, TYPE_MOBILE_HIPRI and TYPE_BLUETOOTH -->
+    <integer-array translatable="false" name="config_tether_upstream_types">
+        <item>0</item>
+        <item>1</item>
+        <item>4</item>
+    </integer-array>
+
+    <bool name="config_automatic_brightness_available">true</bool>
+
+    <bool name="config_unplugTurnsOnScreen">true</bool>
+
+    <bool name="config_animateScreenLights">false</bool>
+
+    <bool name="config_batterySdCardAccessibility">true</bool>
+
+    <bool name="config_intrusiveNotificationLed">true</bool>
+
+    <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
+         The N entries of this array define N + 1 zones as follows:
+
+         Zone 0:        0 <= LUX < array[0]
+         Zone 1:        array[0] <= LUX < array[1]
+         ...
+         Zone N:        array[N - 1] <= LUX < array[N]
+         Zone N + 1:    array[N] <= LUX < infinity
+
+         Must be overridden in platform specific overlays -->
+    <integer-array name="config_autoBrightnessLevels">
+        <item>200</item>
+        <item>400</item>
+        <item>1000</item>
+        <item>3000</item>
+    </integer-array>
+
+    <!-- Array of output values for LCD backlight corresponding to the LUX values
+         in the config_autoBrightnessLevels array.  This array should have size one greater
+         than the size of the config_autoBrightnessLevels array.
+         This must be overridden in platform specific overlays -->
+    <integer-array name="config_autoBrightnessLcdBacklightValues">
+        <item>35</item>
+        <item>55</item>
+        <item>70</item>
+        <item>90</item>
+        <item>210</item>
+    </integer-array>
+
+    <!-- Array of output values for button backlight corresponding to the LUX values
+         in the config_autoBrightnessLevels array.  This array should have size one greater
+         than the size of the config_autoBrightnessLevels array.
+         This must be overridden in platform specific overlays -->
+    <integer-array name="config_autoBrightnessButtonBacklightValues">
+        <item>255</item>
+        <item>255</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+
+    <!-- Array of output values for keyboard backlight corresponding to the LUX values
+         in the config_autoBrightnessLevels array.  This array should have size one greater
+         than the size of the config_autoBrightnessLevels array.
+         This must be overridden in platform specific overlays -->
+    <integer-array name="config_autoBrightnessKeyboardBacklightValues">
+        <item>5</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+
+    <!-- Component name of the service providing network location support. -->
+    <string name="config_networkLocationProvider">com.google.android.location.NetworkLocationProvider</string>
+
+    <!-- Component name of the service providing geocoder API support. -->
+    <string name="config_geocodeProvider">com.google.android.location.GeocodeProvider</string>
+
+    <!-- Boolean indicating if current platform supports bluetooth SCO for off call
+    use cases -->
+    <bool name="config_bluetooth_sco_off_call">true</bool>
+
+    <!-- Boolean indicating if current platform supports bluetooth wide band
+         speech -->
+    <bool name="config_bluetooth_wide_band_speech">true</bool>
+
+    <!-- Boolean indicating if current platform supports quick switch-on/off of
+         Bluetooth Module -->
+    <bool name="config_bluetooth_adapter_quick_switch">true</bool>
+
+    <string name="config_legacyUmsLunFile">/sys/devices/platform/msm_hsusb/gadget/lun0/file</string>
+
+</resources>

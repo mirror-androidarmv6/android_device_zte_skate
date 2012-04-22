@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string name="app_name">Ajustes ZTE Skate</string>
+        <string name="prox_calibration_title_head">Calibrado de sensor de proximidad</string>
+        <string name="prox_calibration_summary_head">No poner nada encima de la pantalla mientras se esté calibrando</string>
+        <string name="prox_display_title_head">Datos de proximidad del sensor</string>
+        <string name="prox_display_summary_head">Mostrar datos de calibración del sensor de proximidad</string>
+        <string name="toast_error">Error:</string>
+        <string name="back_button">Atrás</string>
+        <string name="prox_restore_title_head">Restaurar predeterminados</string>
+        <string name="prox_restore_summary_head">Borrar datos de calibración (Requiere reinicio)</string>
+        <string name="delete_success">Datos de calibración borrados. Por favor, reinicia.</string>
+        <string name="delete_error">Fallo al restaurar predeterminados.</string>
+        <string name="delete_no_file">Ya se están usando valores predeterminados.</string>
+
+        <string name="usb_charging_title_head">Carga en USB</string>
+        <string name="usb_charging_summary_head">Habilitar/Deshabilitar carga en modo de datos USB</string>
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string name="app_name">ZTE Skate 設定</string>
+        <string name="prox_calibration_title_head">校準距離感應器</string>
+        <string name="prox_calibration_summary_head">在執行校準的過程中切勿將任何物件移近螢幕頂部</string>
+        <string name="prox_display_title_head">顯示距離感應器數據</string>
+        <string name="prox_display_summary_head">顯示距離感應器目前的校準數據</string>
+        <string name="toast_error">錯誤：</string>
+        <string name="back_button">返回</string>
+        <string name="prox_restore_title_head">回復距離感應器預設值</string>
+        <string name="prox_restore_summary_head">刪除校準數據（需要重新啟動）</string>
+        <string name="delete_success">成功回復至預設值。請重新啟動手機。</string>
+        <string name="delete_error">無法回復至預設值。</string>
+        <string name="delete_no_file">現正使用的已經是預設值。</string>
+
+        <string name="usb_charging_title_head">USB 充電</string>
+        <string name="usb_charging_summary_head">啟用／停用充電</string>
+</resources>
