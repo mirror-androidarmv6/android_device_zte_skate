@@ -6,8 +6,8 @@
 		android:title="@string/prox_display_title_head" android:summary="@string/prox_display_summary_head">
 
 		<intent android:action="android.intent.action.MAIN"
-			android:targetPackage="com.cyanogenmod.SkateParts"
-			android:targetClass="com.cyanogenmod.SkateParts.ProxDisplay" />
+			android:targetPackage="com.cyanogenmod.settings.device"
+			android:targetClass="com.cyanogenmod.settings.device.ProxDisplay" />
 	</PreferenceScreen>
 
 	<!-- Proximity sensor calibration -->
@@ -15,8 +15,8 @@
 		android:title="@string/prox_calibration_title_head" android:summary="@string/prox_calibration_summary_head">
 
 		<intent android:action="android.intent.action.MAIN"
-			android:targetPackage="com.cyanogenmod.SkateParts"
-			android:targetClass="com.cyanogenmod.SkateParts.ProxCalibration" />
+			android:targetPackage="com.cyanogenmod.settings.device"
+			android:targetClass="com.cyanogenmod.settings.device.ProxCalibration" />
 	</PreferenceScreen>
 
 	<!-- Proximity sensor restore defaults -->
@@ -24,8 +24,8 @@
 		android:title="@string/prox_restore_title_head" android:summary="@string/prox_restore_summary_head">
 
 		<intent android:action="android.intent.action.MAIN"
-			android:targetPackage="com.cyanogenmod.SkateParts"
-			android:targetClass="com.cyanogenmod.SkateParts.ProxCalRestore" />
+			android:targetPackage="com.cyanogenmod.settings.device"
+			android:targetClass="com.cyanogenmod.settings.device.ProxCalRestore" />
 	</PreferenceScreen>
 
 	<!-- USB Charging -->

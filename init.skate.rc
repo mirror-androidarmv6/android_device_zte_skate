@@ -33,6 +33,8 @@ on boot
     chmod 0660 /sys/module/bluetooth_power/parameters/power
     chmod 0660 /sys/class/rfkill/rfkill0/state
     chmod 0660 /proc/bluetooth/sleep/proto
+    chown bluetooth bluetooth /dev/ttyHS0
+    chmod 0666 /dev/ttyHS0
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
@@ -99,15 +101,14 @@ on property:init.svc.bluetoothd=stopped
     stop abtfilt
 
 service hci_qcomm_init /system/bin/log -t qcom-bluetooth -p i "hci_qcomm_init service requested"
-    class main
     user bluetooth
     group bluetooth net_bt_admin
     disabled
     oneshot
 
-service hciattach /system/bin/hciattach -n -s 115200 /dev/ttyHS0 bcm2035
+service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     class main
-    user bluetooth
+    user root
     group qcom_oncrpc bluetooth net_bt_admin system
     disabled
     oneshot

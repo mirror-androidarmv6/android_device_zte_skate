@@ -63,7 +63,6 @@ PRODUCT_COPY_FILES := \
 
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
-        device/zte/skate/init.bt.sh:system/etc/init.bt.sh \
         system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
 
 # WiFi
