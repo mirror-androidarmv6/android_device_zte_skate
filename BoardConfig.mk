@@ -42,7 +42,7 @@ TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := msm7x27
 TARGET_BOOTLOADER_BOARD_NAME := skate
 
-BOARD_EGL_CFG := device/zte/blade/egl.cfg
+BOARD_EGL_CFG := device/zte/skate/egl.cfg
 
 USE_OPENGL_RENDERER := true
 
