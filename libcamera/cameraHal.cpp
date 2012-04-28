@@ -169,7 +169,7 @@ CameraHAL_HandlePreviewData(const android::sp<android::IMemory>& dataPtr,
       ssize_t  offset;
       size_t   size;
       int32_t  previewFormat = MDP_Y_CBCR_H2V2;
-      int32_t  destFormat    = MDP_RGBA_8888;
+      int32_t  destFormat    = MDP_RGBX_8888;
 
       android::status_t retVal;
       android::sp<android::IMemoryHeap> mHeap = dataPtr->getMemory(&offset,
@@ -181,7 +181,7 @@ CameraHAL_HandlePreviewData(const android::sp<android::IMemory>& dataPtr,
 
       retVal = mWindow->set_buffers_geometry(mWindow,
                                              previewWidth, previewHeight,
-                                             HAL_PIXEL_FORMAT_RGBA_8888);
+                                             HAL_PIXEL_FORMAT_RGBX_8888);
       if (retVal == NO_ERROR) {
          int32_t          stride;
          buffer_handle_t *bufHandle = NULL;
