@@ -69,7 +69,6 @@ PRODUCT_COPY_FILES += \
 
 # WiFi
 PRODUCT_COPY_FILES += \
-        device/zte/skate/prebuilt/dhd.ko:system/lib/modules/dhd.ko \
         device/zte/skate/firmware/fw_4319.bin:system/etc/fw_4319.bin \
         device/zte/skate/firmware/fw_4319_apsta.bin:system/etc/fw_4319_apsta.bin \
         device/zte/skate/firmware/nv_4319.txt:system/etc/nv_4319.txt
