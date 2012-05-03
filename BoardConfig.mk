@@ -16,7 +16,7 @@
 
 # This variable is set first, so it can be overridden
 # by BoardConfigVendor.mk
-USE_CAMERA_STUB := false
+USE_CAMERA_STUB := true
 
 # Use the non-open-source parts, if they're present
 -include vendor/zte/skate/BoardConfigVendor.mk
@@ -62,9 +62,6 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 0x0dc00000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x0a280000
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-# Camera
-BOARD_USE_NASTY_PTHREAD_CREATE_HACK := true
-
 # Wifi
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
 WPA_SUPPLICANT_VERSION := VER_0_8_X
@@ -91,13 +88,15 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun0/f
 
 BOARD_USES_QCOM_HARDWARE := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DREFRESH_RATE=60
-COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT
 
 BOARD_USES_QCOM_LIBS := true
 BOARD_USE_QCOM_PMEM := true
 
 TARGET_USES_GENLOCK := true
 TARGET_FORCE_CPU_UPLOAD := true
+TARGET_USE_OVERLAY := false
+TARGET_HAVE_BYPASS := false
+TARGET_USES_C2D_COMPOSITION := false
 
 WITH_JIT := true
 ENABLE_JSC_JIT := true
