@@ -32,6 +32,7 @@ BOARD_CUSTOM_GRAPHICS := ../../../device/zte/skate/recovery/graphics.c
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/zte/skate/recovery/recovery_ui.c
 TARGET_RECOVERY_INITRC := device/zte/skate/recovery/recovery.rc
 
+BUILD_KERNEL := true
 TARGET_KERNEL_SOURCE := kernel/zte/zte-kernel-msm7x27
 TARGET_KERNEL_CONFIG := cyanogen_skate_defconfig
 
