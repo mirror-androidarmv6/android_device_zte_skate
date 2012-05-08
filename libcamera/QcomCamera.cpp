@@ -39,10 +39,6 @@ extern "C" {
 #include <sys/time.h>
 }
 
-#ifdef PREVIEW_MSM7K
-#define GRALLOC_USAGE_PMEM_PRIVATE_ADSP GRALLOC_USAGE_PRIVATE_0
-#endif
-
 /* HAL function implementation goes here*/
 
 /**
@@ -368,6 +364,7 @@ camera_memory_t * CameraHAL_GenClientData(const sp<IMemory> &dataPtr,
 
 void CameraHAL_FixupParams(CameraParameters &settings)
 {
+   #if 0
    const char *preview_sizes =
       "1280x720,800x480,768x432,720x480,640x480,576x432,480x320,384x288,352x288,320x240,240x160,176x144";
    const char *video_sizes =
@@ -413,6 +410,7 @@ void CameraHAL_FixupParams(CameraParameters &settings)
       settings.set(CameraParameters::KEY_SUPPORTED_PREVIEW_FPS_RANGE,
                    frame_rate_range);
    }
+   #endif
 }
 
 static void camera_release_memory(struct camera_memory *mem) { }
