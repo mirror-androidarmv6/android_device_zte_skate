@@ -40,7 +40,7 @@ PRODUCT_PACKAGES := \
         libstagefrighthw \
         dexpreopt \
         libcamera \
-        camera.skate \
+        camera.msm7x27 \
         gralloc.msm7x27 \
         copybit.msm7x27 \
         hwcomposer.msm7x27
