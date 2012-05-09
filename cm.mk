@@ -1,3 +1,4 @@
+# Correct boot animation size
 TARGET_BOOTANIMATION_NAME := vertical-480x800
 
 $(call inherit-product, device/zte/skate/skate.mk)
@@ -12,3 +13,4 @@ PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=skate BUILD_ID=IMM76D BUILD_FINGERP
 
 PRODUCT_NAME := cm_skate
 PRODUCT_DEVICE := skate
+PRODUCT_RELEASE_NAME := Skate
