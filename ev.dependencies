@@ -1,7 +1,0 @@
-[
- {
-   "repository": "zte-kernel-msm7x27",
-   "target_path": "kernel/zte/zte-kernel-msm7x27",
-   "branch": "ics"
- }
-]
