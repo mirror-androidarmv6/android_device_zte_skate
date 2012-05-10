@@ -45,6 +45,8 @@
 
     <bool name="config_animateScreenLights">false</bool>
 
+    <integer name="config_screenOnAnimation">400</integer>
+
     <bool name="config_batterySdCardAccessibility">true</bool>
 
     <bool name="config_intrusiveNotificationLed">true</bool>
