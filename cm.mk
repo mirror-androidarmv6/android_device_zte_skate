@@ -1,4 +1,4 @@
-# Correct boot animation size
+# Correct bootanimation size for the screen
 TARGET_BOOTANIMATION_NAME := vertical-480x800
 
 $(call inherit-product, device/zte/skate/skate.mk)
@@ -17,3 +17,12 @@ PRODUCT_BRAND := ZTE
 PRODUCT_MANUFACTURER := ZTE
 PRODUCT_MODEL := Skate
 PRODUCT_RELEASE_NAME := Skate
+
+ifdef I_AM_TILAL
+# Goo Manager supprt
+PRODUCT_PROPERTY_OVERRIDES += \
+   ro.goo.board=skate \
+   ro.goo.developerid=tilal6991 \
+   ro.goo.rom=cm9skate \
+   ro.goo.version=$(shell date +%Y%m%d)
+endif
