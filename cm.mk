@@ -19,10 +19,15 @@ PRODUCT_MODEL := Skate
 PRODUCT_RELEASE_NAME := Skate
 
 ifdef I_AM_TILAL
-# Goo Manager supprt
 PRODUCT_PROPERTY_OVERRIDES += \
    ro.goo.board=skate \
    ro.goo.developerid=tilal6991 \
-   ro.goo.rom=cm9skate \
    ro.goo.version=$(shell date +%Y%m%d)
+ifdef CM_SNAPSHOT
+PRODUCT_PROPERTY_OVERRIDES += \
+   ro.goo.rom=cfxskate
+else
+PRODUCT_PROPERTY_OVERRIDES += \
+   ro.goo.rom=cm9skate
+endif
 endif
