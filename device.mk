@@ -22,7 +22,6 @@
 DEVICE_PACKAGE_OVERLAYS := device/zte/skate/overlay
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 $(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
-$(call inherit-product, vendor/zte/skate/skate-vendor.mk)
 
 PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
@@ -108,3 +107,5 @@ PRODUCT_COPY_FILES += \
          frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
          frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
          packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
+
+$(call inherit-product-if-exists, vendor/zte/skate/skate-vendor.mk)
