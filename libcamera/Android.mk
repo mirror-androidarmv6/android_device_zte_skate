@@ -1,5 +1,6 @@
 LOCAL_PATH := $(call my-dir)
 
+
 ## Make libcamera
 
 # When zero we link against libmmcamera; when 1, we dlopen libmmcamera.

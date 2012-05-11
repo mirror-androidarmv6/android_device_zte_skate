@@ -1,5 +1,4 @@
 LOCAL_PATH := $(call my-dir)
-## Make camera wrapper
 
 include $(CLEAR_VARS)
 
