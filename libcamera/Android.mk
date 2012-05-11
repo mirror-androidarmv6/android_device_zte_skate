@@ -33,4 +33,4 @@ LOCAL_SHARED_LIBRARIES+= libdl
 endif
 
 LOCAL_MODULE:= libcamera
-include $(BUILD_SHARED_LIBRARY)
+#include $(BUILD_SHARED_LIBRARY)
