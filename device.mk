@@ -33,11 +33,6 @@ PRODUCT_PACKAGES := \
         SkateParts \
         libmm-omxcore \
         libOmxCore \
-        libdivxdrmdecrypt \
-        libOmxAacEnc \
-        libOmxAmrEnc \
-        libOmxVdec \
-        libOmxVenc \
         libstagefrighthw \
         dexpreopt \
         libcamera \
