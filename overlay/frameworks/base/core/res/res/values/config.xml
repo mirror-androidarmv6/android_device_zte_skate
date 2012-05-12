@@ -20,7 +20,7 @@
 <!-- These resources are around just to allow their values to be customized
      for different hardware and product builds. -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <bool name="config_sf_limitedAlpha">true</bool>
+    <bool name="config_sf_limitedAlpha">false</bool>
 
     <string-array translatable="false" name="config_tether_usb_regexs">
         <item>"usb0"</item>
@@ -44,9 +44,7 @@
     <bool name="config_unplugTurnsOnScreen">true</bool>
 
     <bool name="config_animateScreenLights">false</bool>
-
-    <integer name="config_screenOnAnimation">400</integer>
-
+    
     <bool name="config_batterySdCardAccessibility">true</bool>
 
     <bool name="config_intrusiveNotificationLed">true</bool>
