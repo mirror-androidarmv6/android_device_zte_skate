@@ -61,8 +61,8 @@ DISABLE_DEXPREOPT := false
 ifneq ($(TARGET_BUILD_VARIANT),user)
          PRODUCT_PACKAGES += send_bug
 PRODUCT_COPY_FILES += \
-                 system/extras/bugmailer/bugmailer.sh:system/bin/bugmailer.sh \
-                 system/extras/bugmailer/send_bug:system/bin/send_bug
+        system/extras/bugmailer/bugmailer.sh:system/bin/bugmailer.sh \
+        system/extras/bugmailer/send_bug:system/bin/send_bug
 endif
 
 PRODUCT_COPY_FILES := \
@@ -77,8 +77,7 @@ PRODUCT_COPY_FILES := \
         device/zte/skate/prebuilt/synaptics-rmi4-ts.idc:system/usr/idc/synaptics-rmi4-ts.idc \
         device/zte/skate/prebuilt/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
         device/zte/skate/prebuilt/start_usb0.sh:system/etc/start_usb0.sh \
-        device/zte/skate/prebuilt/libcamera.so:obj/lib/libcamera.so \
-        device/zte/skate/prebuilt/libcamera.so:system/lib/libcamera.so \
+        device/zte/skate/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
         device/zte/skate/gps.conf:system/etc/gps.conf
 
 # WiFi
@@ -102,7 +101,6 @@ PRODUCT_COPY_FILES += \
          frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
          frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
          frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-         frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-         packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
+         frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
 
 $(call inherit-product-if-exists, vendor/zte/skate/skate-vendor.mk)

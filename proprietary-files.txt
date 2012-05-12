@@ -28,7 +28,6 @@ lib/libmmipl.so
 ## BT proprietary
 bin/BCM2070B0_002.001.032.0518.0520.hcd
 etc/BCM2070B0_002.001.032.0518.0520.hcd
-etc/init.qcom.bt.sh
 bin/hci_qcomm_init
 bin/hciattach
 
