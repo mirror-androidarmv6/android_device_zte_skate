@@ -25,27 +25,22 @@ TARGET_CPU_ABI := armeabi-v6l
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv6-vfp
 
-TARGET_NO_BOOTLOADER := true
-
 TARGET_PREBUILT_RECOVERY_KERNEL := device/zte/skate/recovery_kernel
 BOARD_CUSTOM_GRAPHICS := ../../../device/zte/skate/recovery/graphics.c
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/zte/skate/recovery/recovery_ui.c
 TARGET_RECOVERY_INITRC := device/zte/skate/recovery/recovery.rc
 
-BUILD_KERNEL := true
 TARGET_KERNEL_SOURCE := kernel/zte/zte-kernel-msm7x27
 TARGET_KERNEL_CONFIG := cyanogen_skate_defconfig
-
+BUILD_KERNEL := true
 BOARD_KERNEL_BASE := 0x02600000
 BOARD_KERNEL_CMDLINE := androidboot.hardware=skate console=null
 
+TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := msm7x27
 TARGET_BOOTLOADER_BOARD_NAME := skate
 
-BOARD_EGL_CFG := device/zte/skate/egl.cfg
-
-USE_OPENGL_RENDERER := true
 
 # dev:    size   erasesize  name
 # mtd0: 00500000 00020000 "recovery"
@@ -92,6 +87,8 @@ BOARD_USES_QCOM_HARDWARE := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DREFRESH_RATE=60
 BOARD_USES_QCOM_LIBS := true
 
+BOARD_EGL_CFG := device/zte/skate/egl.cfg
+USE_OPENGL_RENDERER := true
 TARGET_USES_GENLOCK := true
 TARGET_FORCE_CPU_UPLOAD := true
 
