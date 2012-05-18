@@ -21,3 +21,5 @@ dalvik.vm.execution-mode=int:jit
 
 persist.sys.use_dithering=1
 com.qc.hardware=true
+
+ro.telephony.call_ring.delay=3000
