@@ -46,7 +46,8 @@ PRODUCT_PACKAGES += \
         LiveWallpapers \
         LiveWallpapersPicker \
         VisualizationWallpapers \
-        librs_jni
+        librs_jni \
+        Apollo
 
 PRODUCT_PACKAGES += \
         audio.primary.skate \
