@@ -59,11 +59,10 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x0a280000
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Wifi
-BOARD_WPA_SUPPLICANT_DRIVER := WEXT
+BOARD_WLAN_DEVICE := bcmdhd
 WPA_SUPPLICANT_VERSION := VER_0_8_X
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_wext
-# I know we have the bcm4319 but this is a hack to get around incompatibility
-BOARD_WLAN_DEVICE := bcm4329
+BOARD_WPA_SUPPLICANT_DRIVER := WEXT
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/dhd.ko"
 WIFI_DRIVER_FW_PATH_AP := "/system/etc/fw_4319.bin"
 WIFI_DRIVER_FW_PATH_STA := "/system/etc/fw_4319_apsta.bin"
