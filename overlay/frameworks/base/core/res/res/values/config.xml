@@ -20,7 +20,6 @@
 <!-- These resources are around just to allow their values to be customized
      for different hardware and product builds. -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <bool name="config_sf_limitedAlpha">false</bool>
 
     <string-array translatable="false" name="config_tether_usb_regexs">
         <item>"usb0"</item>
@@ -121,5 +120,7 @@
     <bool name="config_bluetooth_adapter_quick_switch">true</bool>
 
     <string name="config_legacyUmsLunFile">/sys/devices/platform/msm_hsusb/gadget/lun0/file</string>
+    
+    <bool name="config_showNavigationBar">true</bool>
 
 </resources>
