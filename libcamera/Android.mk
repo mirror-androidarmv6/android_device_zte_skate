@@ -1,6 +1,6 @@
 LOCAL_PATH := $(call my-dir)
 
-####### LIBCAMERA #######
+## Make libcamera
 
 # When zero we link against libmmcamera; when 1, we dlopen libmmcamera.
 DLOPEN_LIBMMCAMERA:=1
@@ -14,8 +14,8 @@ LOCAL_SRC_FILES:= QualcommCameraHardware.cpp
 
 LOCAL_CFLAGS:= -DDLOPEN_LIBMMCAMERA=$(DLOPEN_LIBMMCAMERA)
 
-# Can be raised to 6 to improve framerate, at the cost of allocating
-# more ADSP memory. Use 0xa68000 as pool size in kernel to test
+## Can be raised to 6 to improve framerate, at the cost of allocating
+## more ADSP memory. Use 0xa68000 as pool size in kernel to test
 LOCAL_CFLAGS+= -DNUM_PREVIEW_BUFFERS=2 -D_ANDROID_
 
 LOCAL_C_INCLUDES+= \
@@ -45,11 +45,8 @@ LOCAL_MODULE         := camera.$(TARGET_BOARD_PLATFORM)
 LOCAL_SRC_FILES      := cameraHal.cpp
 LOCAL_PRELINK_MODULE := false
 
-LOCAL_SHARED_LIBRARIES := liblog libdl libutils libcamera_client libbinder libcutils libhardware libcamera libui
-
-LOCAL_C_INCLUDES       := frameworks/base/services \
-                          frameworks/base/include \
-                          hardware/libhardware/include \
-                          hardware
+LOCAL_SHARED_LIBRARIES := liblog libdl libutils libcamera_client libbinder libcutils libhardware libui libcamera
+LOCAL_C_INCLUDES       := frameworks/base/services/ frameworks/base/include
+LOCAL_C_INCLUDES       += hardware/libhardware/include/ hardware
 
 include $(BUILD_SHARED_LIBRARY)
