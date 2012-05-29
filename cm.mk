@@ -22,12 +22,6 @@ ifdef I_AM_TILAL
 PRODUCT_PROPERTY_OVERRIDES += \
    ro.goo.board=skate \
    ro.goo.developerid=tilal6991 \
-   ro.goo.version=$(shell date +%Y%m%d)
-ifdef CM_SNAPSHOT
-PRODUCT_PROPERTY_OVERRIDES += \
+   ro.goo.version=$(shell date +%Y%m%d) \
    ro.goo.rom=cfxskate
-else
-PRODUCT_PROPERTY_OVERRIDES += \
-   ro.goo.rom=cm9skate
-endif
 endif
