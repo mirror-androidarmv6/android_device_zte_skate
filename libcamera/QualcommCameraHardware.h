@@ -7,7 +7,7 @@
 ** you may not use this file except in compliance with the License.
 ** You may obtain a copy of the License at
 **
-** http://www.apache.org/licenses/LICENSE-2.0
+**     http://www.apache.org/licenses/LICENSE-2.0
 **
 ** Unless required by applicable law or agreed to in writing, software
 ** distributed under the License is distributed on an "AS IS" BASIS,
@@ -19,7 +19,7 @@
 **
 ** All alterations done to this file to add support for the Z71 terminal
 ** are intended for use with CyanogenMod. This includes all the support
-** for ov5642, and the reverse engineered bits like ioctls and EXIF
+** for ov5642, and the reverse engineered bits like ioctls and EXIF 
 ** referred to below as "Values originally from proprietary headers")
 ** Please do not change the EXIF header without asking me first.
 */
@@ -43,12 +43,13 @@ struct str_map {
     int val;
 };
 
-typedef enum {
+typedef enum{
+    TARGET_MSM7227,
     TARGET_MSM7625,
     TARGET_MSM7627,
     TARGET_QSD8250,
     TARGET_MSM7630,
-    TARGET_MAX
+    TARGET_MAX,
 }targetType;
 
 struct target_map {
@@ -93,57 +94,57 @@ struct board_property{
 #define MAXIMUM_FPS 25
 
 typedef struct {
-unsigned int in1_w;
-unsigned int in1_h;
-unsigned int out1_w;
-unsigned int out1_h;
-unsigned int in2_w;
-unsigned int in2_h;
-unsigned int out2_w;
-unsigned int out2_h;
-uint8_t update_flag;
+	unsigned int in1_w;
+	unsigned int in1_h;
+	unsigned int out1_w;
+	unsigned int out1_h;
+	unsigned int in2_w;
+	unsigned int in2_h;
+	unsigned int out2_w;
+	unsigned int out2_h;
+	uint8_t update_flag; 
 } common_crop_t;
 
 typedef uint8_t cam_ctrl_type;
 
 typedef struct {
-unsigned short video_width;
-unsigned short video_height;
-unsigned short picture_width;
-unsigned short picture_height;
-unsigned short display_width;
-unsigned short display_height;
-unsigned short orig_picture_dx;
-unsigned short orig_picture_dy;
-unsigned short ui_thumbnail_height;
-unsigned short ui_thumbnail_width;
-unsigned short thumbnail_width;
-unsigned short thumbnail_height;
-unsigned short raw_picture_height;
-unsigned short raw_picture_width;
-unsigned short filler7;
-unsigned short filler8;
+	unsigned short video_width;
+	unsigned short video_height;
+	unsigned short picture_width;
+	unsigned short picture_height;
+	unsigned short display_width;
+	unsigned short display_height;
+	unsigned short orig_picture_dx;
+	unsigned short orig_picture_dy;
+	unsigned short ui_thumbnail_height;
+	unsigned short ui_thumbnail_width;
+	unsigned short thumbnail_width;
+	unsigned short thumbnail_height;
+	unsigned short raw_picture_height;
+	unsigned short raw_picture_width;
+	unsigned short filler7;
+	unsigned short filler8;
 } cam_ctrl_dimension_t;
 
 typedef struct {
-uint32_t timestamp; /* seconds since 1/6/1980 */
-double latitude; /* degrees, WGS ellipsoid */
-double longitude; /* degrees */
-int16_t altitude; /* meters */
+	uint32_t timestamp;  /* seconds since 1/6/1980          */
+	double   latitude;   /* degrees, WGS ellipsoid */
+	double   longitude;  /* degrees                */
+	int16_t  altitude;   /* meters                          */
 } camera_position_type;
 typedef uint8_t jpeg_event_t;
 
 typedef enum {
-CAMERA_WB_MIN_MINUS_1,
-CAMERA_WB_AUTO = 1, /* This list must match aeecamera.h */
-CAMERA_WB_CUSTOM,
-CAMERA_WB_INCANDESCENT,
-CAMERA_WB_FLUORESCENT,
-CAMERA_WB_DAYLIGHT,
-CAMERA_WB_CLOUDY_DAYLIGHT,
-CAMERA_WB_TWILIGHT,
-CAMERA_WB_SHADE,
-CAMERA_WB_MAX_PLUS_1
+	CAMERA_WB_MIN_MINUS_1,
+	CAMERA_WB_AUTO = 1,  /* This list must match aeecamera.h */
+	CAMERA_WB_CUSTOM,
+	CAMERA_WB_INCANDESCENT,
+	CAMERA_WB_FLUORESCENT,
+	CAMERA_WB_DAYLIGHT,
+	CAMERA_WB_CLOUDY_DAYLIGHT,
+	CAMERA_WB_TWILIGHT,
+	CAMERA_WB_SHADE,
+	CAMERA_WB_MAX_PLUS_1
 } camera_wb_type;
 
 typedef enum {
@@ -155,75 +156,75 @@ typedef enum {
 } camera_antibanding_type;
 
 typedef enum {
-AF_MODE_NORMAL,
-AF_MODE_MACRO,
-AF_MODE_AUTO,
+	AF_MODE_NORMAL,
+	AF_MODE_MACRO,
+	AF_MODE_AUTO,
 } isp3a_af_mode_t;
 
 enum {
-CAMERA_AEC_FRAME_AVERAGE,
-CAMERA_AEC_CENTER_WEIGHTED,
-CAMERA_AEC_SPOT_METERING,
+	CAMERA_AEC_FRAME_AVERAGE,
+	CAMERA_AEC_CENTER_WEIGHTED,
+	CAMERA_AEC_SPOT_METERING,
 };
 
 enum {
-LED_MODE_OFF,
-LED_MODE_AUTO,
-LED_MODE_ON,
+	LED_MODE_OFF,
+	LED_MODE_AUTO,
+	LED_MODE_ON,
 };
 
 typedef enum {
-CAMERA_ISO_AUTO,
-CAMERA_ISO_DEBLUR,
-CAMERA_ISO_100,
-CAMERA_ISO_200,
-CAMERA_ISO_400,
-CAMERA_ISO_800,
-CAMERA_ISO_1600,
+	CAMERA_ISO_AUTO,
+	CAMERA_ISO_DEBLUR,
+	CAMERA_ISO_100,
+	CAMERA_ISO_200,
+	CAMERA_ISO_400,
+	CAMERA_ISO_800,
+	CAMERA_ISO_1600,
 } camera_iso_mode_type;
 
 struct fifo_queue {
-int num_of_frames;
-int front;
-struct fifo_node *node;
-pthread_mutex_t mut;
-pthread_cond_t wait;
+	int num_of_frames;
+	int front;
+	struct fifo_node *node;
+	pthread_mutex_t mut;
+	pthread_cond_t wait;
 };
 
 struct fifo_node {
-struct msm_frame *f;
-struct fifo_node *next;
+	struct msm_frame *f;
+	struct fifo_node *next;
 };
 
 void enqueue(struct fifo_queue *queue, struct fifo_node *node) {
-struct fifo_node *cur_node=queue->node;
-int i;
-LOGE("enqueue:%p(%d)\n", node, queue->num_of_frames);
-node->next=NULL;
-if(queue->num_of_frames==0) {
-queue->num_of_frames++;
-queue->front=!!queue->num_of_frames;
-queue->node=node;
-return;
-}
-queue->num_of_frames++;
-queue->front=!!queue->num_of_frames;
-for(i=0;i<(queue->num_of_frames-2);++i) {
-cur_node=cur_node->next;
-assert(!!cur_node);
-}
-cur_node->next=node;
+	struct fifo_node *cur_node=queue->node;
+	int i;
+	LOGE("enqueue:%p(%d)\n", node, queue->num_of_frames);
+	node->next=NULL;
+	if(queue->num_of_frames==0) {
+		queue->num_of_frames++;
+		queue->front=!!queue->num_of_frames;
+		queue->node=node;
+		return;
+	}
+	queue->num_of_frames++;
+	queue->front=!!queue->num_of_frames;
+	for(i=0;i<(queue->num_of_frames-2);++i) {
+		cur_node=cur_node->next;
+		assert(!!cur_node);
+	}
+	cur_node->next=node;
 }
 
 struct fifo_node *dequeue(struct fifo_queue *queue) {
-if(queue->num_of_frames==0)
-return NULL;
-struct fifo_node *node=queue->node;
-LOGE("dequeue:%p(%d)\n", node, queue->num_of_frames);
-queue->num_of_frames--;
-queue->front=!!queue->num_of_frames;
-queue->node=queue->node->next;
-return node;
+	if(queue->num_of_frames==0)
+		return NULL;
+	struct fifo_node *node=queue->node;
+	LOGE("dequeue:%p(%d)\n", node, queue->num_of_frames);
+	queue->num_of_frames--;
+	queue->front=!!queue->num_of_frames;
+	queue->node=queue->node->next;
+	return node;
 }
 
 
@@ -288,26 +289,26 @@ enum camera_ops {
 };
 
 typedef enum {
-CAMERA_RSP_CB_SUCCESS,
-CAMERA_EXIT_CB_DONE,
-CAMERA_EXIT_CB_FAILED,
-CAMERA_EXIT_CB_DSP_IDLE,
-CAMERA_EXIT_CB_DSP_ABORT,
-CAMERA_EXIT_CB_ABORT,
-CAMERA_EXIT_CB_ERROR,
-CAMERA_EVT_CB_FRAME,
-CAMERA_EVT_CB_PICTURE,
-CAMERA_STATUS_CB,
-CAMERA_EXIT_CB_FILE_SIZE_EXCEEDED,
-CAMERA_EXIT_CB_BUFFER,
-CAMERA_EVT_CB_SNAPSHOT_DONE,
-CAMERA_CB_MAX,
+	CAMERA_RSP_CB_SUCCESS,
+	CAMERA_EXIT_CB_DONE,
+	CAMERA_EXIT_CB_FAILED,
+	CAMERA_EXIT_CB_DSP_IDLE,
+	CAMERA_EXIT_CB_DSP_ABORT,
+	CAMERA_EXIT_CB_ABORT,
+	CAMERA_EXIT_CB_ERROR,
+	CAMERA_EVT_CB_FRAME,
+	CAMERA_EVT_CB_PICTURE,
+	CAMERA_STATUS_CB,
+	CAMERA_EXIT_CB_FILE_SIZE_EXCEEDED,
+	CAMERA_EXIT_CB_BUFFER,
+	CAMERA_EVT_CB_SNAPSHOT_DONE,
+	CAMERA_CB_MAX,
 } camera_cb_type;
 
 struct cam_frame_start_parms {
-unsigned int unknown;
-struct msm_frame frame;
-struct msm_frame video_frame;
+	unsigned int unknown;
+	struct msm_frame frame;
+	struct msm_frame video_frame;
 };
 
 typedef unsigned int exif_tag_id_t;
@@ -317,30 +318,30 @@ typedef unsigned int exif_tag_id_t;
 #define EXIF_BYTE 1
 
 typedef struct {
-int val;
-int otherval;
+	int val;
+	int otherval;
 } rat_t;
 
 
 typedef union {
         char * _ascii; /* At byte 16 relative to exif_tag_entry_t */
         rat_t * _rats;
-        rat_t _rat;
+        rat_t  _rat;
         uint8_t _byte;
 } exif_tag_data_t;
 
 /* The entire exif_tag_entry_t struct must be 24 bytes in length */
 typedef unsigned int exif_tag_type_t;
 typedef struct {
-exif_tag_type_t type;
-uint32_t copy;
-uint32_t count;
-exif_tag_data_t data;
+	exif_tag_type_t type;
+	uint32_t copy;
+	uint32_t count;
+	exif_tag_data_t data;
 } exif_tag_entry_t;
 
 typedef struct {
-exif_tag_id_t tag_id;
-exif_tag_entry_t tag_entry;
+	exif_tag_id_t tag_id;
+	exif_tag_entry_t tag_entry;
 } exif_tags_info_t;
 
 /* EXIF tag IDs */
@@ -420,9 +421,9 @@ private:
     static wp<QualcommCameraHardware> singleton;
 
     /* These constants reflect the number of buffers that libmmcamera requires
-for preview and raw, and need to be updated when libmmcamera
-changes.
-*/
+       for preview and raw, and need to be updated when libmmcamera
+       changes.
+    */
     static const int kPreviewBufferCount = NUM_PREVIEW_BUFFERS;
     static const int kRawBufferCount = 1;
     static const int kJpegBufferCount = 1;
@@ -436,7 +437,7 @@ changes.
     bool mPreviewInitialized;
 
     // This class represents a heap which maintains several contiguous
-    // buffers. The heap may be backed by pmem (when pmem_pool contains
+    // buffers.  The heap may be backed by pmem (when pmem_pool contains
     // the name of a /dev/pmem* file), or by ashmem (when pmem_pool == NULL).
 
     struct MemPool : public RefBase {
@@ -580,20 +581,20 @@ changes.
 
     Mutex mCallbackLock;
     Mutex mOverlayLock;
-Mutex mRecordLock;
-Mutex mRecordFrameLock;
-Condition mRecordWait;
+	Mutex mRecordLock;
+	Mutex mRecordFrameLock;
+	Condition mRecordWait;
     Condition mStateWait;
 
-    /* mJpegSize keeps track of the size of the accumulated JPEG. We clear it
-when we are about to take a picture, so at any time it contains either
-zero, or the size of the last JPEG picture taken.
-*/
+    /* mJpegSize keeps track of the size of the accumulated JPEG.  We clear it
+       when we are about to take a picture, so at any time it contains either
+       zero, or the size of the last JPEG picture taken.
+    */
     uint32_t mJpegSize;
-    unsigned int mPreviewFrameSize;
-    unsigned int mRecordFrameSize;
-    int mRawSize;
-    int mJpegMaxSize;
+    unsigned int        mPreviewFrameSize;
+    unsigned int        mRecordFrameSize;
+    int                 mRawSize;
+    int                 mJpegMaxSize;
 
 #if DLOPEN_LIBMMCAMERA
     void *libmmcamera;
@@ -611,6 +612,7 @@ zero, or the size of the last JPEG picture taken.
     pthread_t mFrameThread;
     pthread_t mVideoThread;
     pthread_t mSnapshotThread;
+    pthread_t mCamConfigThread;
 
     common_crop_t mCrop;
 
@@ -622,13 +624,13 @@ zero, or the size of the last JPEG picture taken.
     struct msm_frame *recordframes;
     bool mInPreviewCallback;
     bool mUseOverlay;
-    sp<Overlay> mOverlay;
+    sp<Overlay>  mOverlay;
 
-    int32_t mMsgEnabled; // camera msg to be handled
+    int32_t mMsgEnabled;    // camera msg to be handled
     notify_callback mNotifyCallback;
     data_callback mDataCallback;
     data_callback_timestamp mDataCallbackTimestamp;
-    void *mCallbackCookie; // same for all callbacks
+    void *mCallbackCookie;  // same for all callbacks
     int mDebugFps;
     int kPreviewBufferCountActual;
     int previewWidth, previewHeight;
@@ -637,3 +639,4 @@ zero, or the size of the last JPEG picture taken.
 }; // namespace android
 
 #endif
+
