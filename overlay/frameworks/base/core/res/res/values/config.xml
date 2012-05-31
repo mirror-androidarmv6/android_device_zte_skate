@@ -120,7 +120,5 @@
     <bool name="config_bluetooth_adapter_quick_switch">true</bool>
 
     <string name="config_legacyUmsLunFile">/sys/devices/platform/msm_hsusb/gadget/lun0/file</string>
-    
-    <bool name="config_showNavigationBar">true</bool>
 
 </resources>
