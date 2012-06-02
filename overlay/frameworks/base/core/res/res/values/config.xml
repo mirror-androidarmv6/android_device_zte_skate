@@ -21,6 +21,8 @@
      for different hardware and product builds. -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <integer name="config_screenOnAnimation">250</integer>
+
     <string-array translatable="false" name="config_tether_usb_regexs">
         <item>"usb0"</item>
     </string-array>
