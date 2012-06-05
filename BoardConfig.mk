@@ -97,4 +97,4 @@ ENABLE_JSC_JIT := true
 JS_ENGINE := v8
 HTTP := chrome
 
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/zte/blade/releasetools/ota_from_target_files
+TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/zte/skate/releasetools/ota_from_target_files
