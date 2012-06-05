@@ -103,7 +103,7 @@ OPTIONS.backuptool = False
 OPTIONS.modelidcfg = True
 OPTIONS.override_device = 'auto'
 
-EXTRAS_FILE = 'device/zte/blade/releasetools/extras.txt'
+EXTRAS_FILE = 'device/zte/skate/releasetools/extras.txt'
 
 def MostPopularKey(d, default):
   """Given a dict, return the key corresponding to the largest
