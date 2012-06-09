@@ -75,6 +75,7 @@ PRODUCT_COPY_FILES := \
         device/zte/skate/AutoVolumeControl.txt:system/etc/AutoVolumeControl.txt \
         device/zte/skate/media_profiles.xml:system/etc/media_profiles.xml \
         device/zte/skate/prebuilt/synaptics-rmi4-ts.idc:system/usr/idc/synaptics-rmi4-ts.idc \
+        device/zte/skate/prebuilt/GooManager.apk:system/app/GooManager.apk \
         device/zte/skate/prebuilt/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
         device/zte/skate/prebuilt/start_usb0.sh:system/etc/start_usb0.sh \
         device/zte/skate/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
