@@ -23,3 +23,6 @@ persist.sys.use_dithering=1
 com.qc.hardware=true
 
 ro.telephony.call_ring.delay=3000
+
+# Uncomment to disable bootanimation
+# persist.sys.nobootanimation=1
