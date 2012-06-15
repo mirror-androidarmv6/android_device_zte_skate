@@ -21,7 +21,7 @@
      for different hardware and product builds. -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <integer name="config_screenOnAnimation">250</integer>
+    <integer name="config_screenOnAnimation">0</integer>
 
     <string-array translatable="false" name="config_tether_usb_regexs">
         <item>"usb0"</item>
@@ -119,7 +119,7 @@
 
     <!-- Boolean indicating if current platform supports quick switch-on/off of
          Bluetooth Module -->
-    <bool name="config_bluetooth_adapter_quick_switch">true</bool>
+    <bool name="config_bluetooth_adapter_quick_switch">false</bool>
 
     <string name="config_legacyUmsLunFile">/sys/devices/platform/msm_hsusb/gadget/lun0/file</string>
 
