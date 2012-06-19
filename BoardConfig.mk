@@ -41,7 +41,6 @@ TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := msm7x27
 TARGET_BOOTLOADER_BOARD_NAME := skate
 
-
 # dev:    size   erasesize  name
 # mtd0: 00500000 00020000 "recovery"
 # mtd1: 00500000 00020000 "boot"
@@ -98,4 +97,4 @@ ENABLE_JSC_JIT := true
 JS_ENGINE := v8
 HTTP := chrome
 
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/zte/skate/releasetools/ota_from_target_files
+#TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/zte/skate/releasetools/ota_from_target_files
