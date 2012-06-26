@@ -96,5 +96,12 @@ WITH_JIT := true
 ENABLE_JSC_JIT := true
 JS_ENGINE := v8
 HTTP := chrome
+ENABLE_WEBGL := true
+
+# FM Radio
+BOARD_FM_DEVICE := si4708
+BOARD_HAVE_FM_RADIO := true
+BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO -DFM_RADIO
 
 #TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/zte/skate/releasetools/ota_from_target_files
+
