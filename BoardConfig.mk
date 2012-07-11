@@ -23,7 +23,7 @@ USE_CAMERA_STUB := true
 
 TARGET_CPU_ABI := armeabi-v6l
 TARGET_CPU_ABI2 := armeabi
-TARGET_ARCH_VARIANT := armv6-vfp
+TARGET_ARCH_VARIANT := armv5te-vfp
 
 TARGET_PREBUILT_RECOVERY_KERNEL := device/zte/skate/recovery_kernel
 BOARD_CUSTOM_GRAPHICS := ../../../device/zte/skate/recovery/graphics.c
@@ -85,7 +85,7 @@ BOARD_USES_QCOM_HARDWARE := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DREFRESH_RATE=60
 BOARD_USES_QCOM_LIBS := true
 
-BOARD_EGL_CFG := device/zte/skate/egl.cfg
+#BOARD_EGL_CFG := device/zte/skate/egl.cfg
 #USE_OPENGL_RENDERER := true
 BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
 TARGET_USES_GENLOCK := true
