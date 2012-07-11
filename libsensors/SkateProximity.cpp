@@ -74,7 +74,7 @@ int SkateProximity::initialise() {
     char cfg_data[100];
 
     rv = ioctl(dev_fd, PS_ALS_IOCTL_CONFIG_GET, &cfg);
-    if(rv) LOGE("Failed to read Taos defaults from kernel!!!");
+    if(rv) ALOGE("Failed to read Taos defaults from kernel!!!");
 
     cFile = fopen(PROX_FILE,"r");
     if (cFile != NULL){
@@ -93,15 +93,15 @@ int SkateProximity::initialise() {
               ) == 9){
 
             rv = ioctl(dev_fd, PS_ALS_IOCTL_CONFIG_SET, &cfg);
-            if(rv) LOGE("Set proximity data failed!!!");
-            else LOGD("Proximity calibration data successfully loaded from %s",PROX_FILE);
+            if(rv) ALOGE("Set proximity data failed!!!");
+            else ALOGD("Proximity calibration data successfully loaded from %s",PROX_FILE);
 
         } else {
-            LOGD("Prximity calibration data is not valid. Using defaults.");
+            ALOGD("Prximity calibration data is not valid. Using defaults.");
         }
 
     } else {
-        LOGD("No proximity calibration data found. Using defaults.");
+        ALOGD("No proximity calibration data found. Using defaults.");
     }
     return 1;
 }
@@ -129,14 +129,14 @@ int SkateProximity::enable(int32_t handle, int en) {
 
         if (newState) {
             cmd =PS_ALS_IOCTL_PROX_ON;
-            LOGD_IF(DEBUG,"PROX ON");
+            ALOGD_IF(DEBUG,"PROX ON");
         } else {
             cmd = PS_ALS_IOCTL_PROX_OFF;
-            LOGD_IF(DEBUG,"PROX OFF");
+            ALOGD_IF(DEBUG,"PROX OFF");
         }
         err = ioctl(dev_fd, cmd);
         err = err<0 ? -errno : 0;
-        LOGE_IF(err, "PS_ALS_IOCTL_XXX failed (%s)", strerror(-err));
+        ALOGE_IF(err, "PS_ALS_IOCTL_XXX failed (%s)", strerror(-err));
         if (!err) {
             if (en) {
                 setInitialState();
@@ -146,7 +146,7 @@ int SkateProximity::enable(int32_t handle, int en) {
                mEnabled = 0;
         }
         if (!mEnabled) {
-            LOGD_IF(DEBUG,"closing device");
+            ALOGD_IF(DEBUG,"closing device");
             close_device();
         }
     }
@@ -172,7 +172,7 @@ int SkateProximity::readEvents(sensors_event_t* data, int count)
         int type = event->type;
         if (type == EV_ABS) {
             if (event->code == EVENT_TYPE_PROXIMITY) {
-                LOGD_IF(DEBUG,"Prox value=%i",event->value);
+                ALOGD_IF(DEBUG,"Prox value=%i",event->value);
                 mPendingEvents.distance = indexToValue(event->value);
             }
 
@@ -185,7 +185,7 @@ int SkateProximity::readEvents(sensors_event_t* data, int count)
                 numEventReceived++;
             }
         } else {
-            LOGE("SkateSensor: unknown event (type=%d, code=%d)",type, event->code);
+            ALOGE("SkateSensor: unknown event (type=%d, code=%d)",type, event->code);
         }
         mInputReader.next();
     }

@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "AudioPolicyManager"
-//#define LOG_NDEBUG 0
+#define ALOG_TAG "AudioPolicyManager"
+//#define ALOG_NDEBUG 0
 #include <utils/Log.h>
 #include "AudioPolicyManager.h"
 #include <media/mediarecorder.h>
@@ -48,7 +48,7 @@ uint32_t AudioPolicyManager::getDeviceForStrategy(routing_strategy strategy, boo
     uint32_t device = 0;
 
     if (fromCache) {
-        LOGV("getDeviceForStrategy() from cache strategy %d, device %x", strategy, mDeviceForStrategy[strategy]);
+        ALOGV("getDeviceForStrategy() from cache strategy %d, device %x", strategy, mDeviceForStrategy[strategy]);
         return mDeviceForStrategy[strategy];
     }
 
@@ -98,7 +98,7 @@ uint32_t AudioPolicyManager::getDeviceForStrategy(routing_strategy strategy, boo
 
             device = mAvailableOutputDevices & AudioSystem::DEVICE_OUT_EARPIECE;
             if (device == 0) {
-                LOGE("getDeviceForStrategy() earpiece device not found");
+                ALOGE("getDeviceForStrategy() earpiece device not found");
             }
             break;
 
@@ -117,7 +117,7 @@ uint32_t AudioPolicyManager::getDeviceForStrategy(routing_strategy strategy, boo
 #endif
             device = mAvailableOutputDevices & AudioSystem::DEVICE_OUT_SPEAKER;
             if (device == 0) {
-                LOGE("getDeviceForStrategy() speaker device not found");
+                ALOGE("getDeviceForStrategy() speaker device not found");
             }
             break;
         }
@@ -126,7 +126,7 @@ uint32_t AudioPolicyManager::getDeviceForStrategy(routing_strategy strategy, boo
     case STRATEGY_SONIFICATION:
         device = mAvailableOutputDevices & AudioSystem::DEVICE_OUT_SPEAKER;
         if (device == 0) {
-            LOGE("getDeviceForStrategy() speaker device not found");
+            ALOGE("getDeviceForStrategy() speaker device not found");
         }
         // The second device used for sonification is the same as the device used by media strategy
         // FALL THROUGH
@@ -178,16 +178,16 @@ uint32_t AudioPolicyManager::getDeviceForStrategy(routing_strategy strategy, boo
             !AudioSystem::isA2dpDevice((AudioSystem::audio_devices)device) &&
             device != getDeviceForStrategy(STRATEGY_PHONE)) {
             device = 0;
-            LOGV("getDeviceForStrategy() incompatible media and phone devices");
+            ALOGV("getDeviceForStrategy() incompatible media and phone devices");
         }
         } break;
 
     default:
-        LOGW("getDeviceForStrategy() unknown strategy: %d", strategy);
+        ALOGW("getDeviceForStrategy() unknown strategy: %d", strategy);
         break;
     }
 
-    LOGV("getDeviceForStrategy() strategy %d, device %x", strategy, device);
+    ALOGV("getDeviceForStrategy() strategy %d, device %x", strategy, device);
     return device;
 }
 

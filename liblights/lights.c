@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "lights.zte"
+#define ALOG_TAG "lights.zte"
 
 #include <cutils/log.h>
 #include <stdint.h>
@@ -62,7 +62,7 @@ static int write_int (const char *path, int value) {
 	fd = open(path, O_RDWR);
 	if (fd < 0) {
 		if (already_warned == 0) {
-			LOGE("write_int failed to open %s\n", path);
+			ALOGE("write_int failed to open %s\n", path);
 			already_warned = 1;
 		}
 		return -errno;
@@ -83,7 +83,7 @@ static int write_string (const char *path, const char *value) {
 	fd = open(path, O_RDWR);
 	if (fd < 0) {
 		if (already_warned == 0) {
-			LOGE("write_string failed to open %s\n", path);
+			ALOGE("write_string failed to open %s\n", path);
 			already_warned = 1;
 		}
 		return -errno;
@@ -114,7 +114,7 @@ static int set_light_backlight (struct light_device_t *dev, struct light_state_t
 	int err = 0;
 	int brightness = rgb_to_brightness(state);
 
-	LOGV("%s brightness=%d color=0x%08x", __func__,brightness,state->color);
+	ALOGV("%s brightness=%d color=0x%08x", __func__,brightness,state->color);
 	pthread_mutex_lock(&g_lock);
 	g_backlight = brightness;
 	err = write_int (LCD_BACKLIGHT_FILE, brightness);
