@@ -51,7 +51,7 @@ SensorBase::~SensorBase() {
 int SensorBase::open_device() {
     if (dev_fd<0 && dev_name) {
         dev_fd = open(dev_name, O_RDONLY);
-        ALOGE_IF(dev_fd<0, "Couldn't open %s (%s)", dev_name, strerror(errno));
+        //ALOGE_IF(dev_fd<0, "Couldn't open %s (%s)", dev_name, strerror(errno));
     }
     return 0;
 }
@@ -117,6 +117,6 @@ int SensorBase::openInput(const char* inputName) {
         }
     }
     closedir(dir);
-    ALOGE_IF(fd<0, "couldn't find '%s' input device", inputName);
+    //ALOGE_IF(fd<0, "couldn't find '%s' input device", inputName);
     return fd;
 }

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#define ALOG_NDEBUG 0
+#define //ALOG_NDEBUG 0
 #include <hardware/sensors.h>
 #include <fcntl.h>
 #include <errno.h>
@@ -79,7 +79,7 @@ private:
 sensors_poll_context_t::sensors_poll_context_t()
 {
     if(fopen(TAOS_DEVICE_NAME,"rw")) {
-        ALOGD("Using taos prox/light sensor");
+        //ALOGD("Using taos prox/light sensor");
         mSensors[prox] = new SkateProximity(const_cast<char *>(TAOS_DEVICE_NAME));
         mPollFds[prox].fd = mSensors[prox]->getFd();
         mPollFds[prox].events = POLLIN;
@@ -90,7 +90,7 @@ sensors_poll_context_t::sensors_poll_context_t()
         mPollFds[light].events = POLLIN;
         mPollFds[light].revents = 0;
     } else {
-        ALOGD("Using ISL prox/light sensor");
+        //ALOGD("Using ISL prox/light sensor");
         mSensors[prox] = new SkateProximity(const_cast<char *>(ISL_DEVICE_NAME));
         mPollFds[prox].fd = mSensors[prox]->getFd();
         mPollFds[prox].events = POLLIN;
@@ -108,7 +108,7 @@ sensors_poll_context_t::sensors_poll_context_t()
 
     int wakeFds[2];
     int result = pipe(wakeFds);
-    ALOGE_IF(result<0, "error creating wake pipe (%s)", strerror(errno));
+    //ALOGE_IF(result<0, "error creating wake pipe (%s)", strerror(errno));
     fcntl(wakeFds[0], F_SETFL, O_NONBLOCK);
     fcntl(wakeFds[1], F_SETFL, O_NONBLOCK);
     mWritePipeFd = wakeFds[1];
@@ -129,12 +129,12 @@ sensors_poll_context_t::~sensors_poll_context_t() {
 int sensors_poll_context_t::activate(int handle, int enabled) {
     int index = handleToDriver(handle);
     if (index < 0) return index;
-    ALOGI("mSensors[%i]->enable(%i, %i)",index, handle, enabled);
+    //ALOGI("mSensors[%i]->enable(%i, %i)",index, handle, enabled);
     int err =  mSensors[index]->enable(handle, enabled);
     if (enabled && !err) {
         const char wakeMessage(WAKE_MESSAGE);
         int result = write(mWritePipeFd, &wakeMessage, 1);
-        ALOGE_IF(result<0, "error sending wake message (%s)", strerror(errno));
+        //ALOGE_IF(result<0, "error sending wake message (%s)", strerror(errno));
     }
     return err;
 }
@@ -173,14 +173,14 @@ int sensors_poll_context_t::pollEvents(sensors_event_t* data, int count)
             // anything to return
             n = poll(mPollFds, numFds, nbEvents ? 0 : -1);
             if (n<0) {
-                ALOGE("poll() failed (%s)", strerror(errno));
+                //ALOGE("poll() failed (%s)", strerror(errno));
                 return -errno;
             }
             if (mPollFds[wake].revents & POLLIN) {
                 char msg;
                 int result = read(mPollFds[wake].fd, &msg, 1);
-                ALOGE_IF(result<0, "error reading from wake pipe (%s)", strerror(errno));
-                ALOGE_IF(msg != WAKE_MESSAGE, "unknown message on wake queue (0x%02x)", int(msg));
+                //ALOGE_IF(result<0, "error reading from wake pipe (%s)", strerror(errno));
+                //ALOGE_IF(msg != WAKE_MESSAGE, "unknown message on wake queue (0x%02x)", int(msg));
                 mPollFds[wake].revents = 0;
             }
         }
