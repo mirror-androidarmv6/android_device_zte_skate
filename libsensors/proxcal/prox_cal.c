@@ -14,7 +14,7 @@ int fd;
 
 void fail(){
     printf("Something went wrong. Aborting");
-    //ALOGE("Something went wrong. Aborting");
+    ALOGE("Something went wrong. Aborting");
     ioctl(fd, PS_ALS_IOCTL_PROX_OFF);
     close(fd);
 
@@ -56,13 +56,13 @@ int main(int argc, char **argv){
     char *p;
     fd = open(TAOS_DEV, O_RDONLY);
     if (fd > 0)
-        //ALOGI("Using taos sensor");
+        ALOGI("Using taos sensor");
     else {
         fd = open(ISL_DEV, O_RDONLY);
-        //ALOGI("Using isl sensor");
+        ALOGI("Using isl sensor");
     }
     if (fd < 0)
-        //ALOGE("Failed to open sensor device");
+        ALOGE("Failed to open sensor device");
 
 const char *delim = "#;,\\n";
     struct PS_ALS_prox_info prox_info;
@@ -108,7 +108,7 @@ const char *delim = "#;,\\n";
 
             writeCfg(&cfg);
             printf("Calibrated proximity sensor\n");
-            //ALOGI("Calibrated proximity sensor\n");
+            ALOGI("Calibrated proximity sensor\n");
 
 
             break;

@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#define //ALOG_TAG "AudioPolicyManager"
-//#define //ALOG_NDEBUG 0
+#define LOG_TAG "AudioPolicyManager"
+//#define ALOG_NDEBUG 0
 #include <utils/Log.h>
 #include "AudioPolicyManager.h"
 #include <media/mediarecorder.h>

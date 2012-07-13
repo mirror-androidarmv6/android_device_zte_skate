@@ -29,6 +29,7 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 PRODUCT_PACKAGES := \
         lights.skate \
         sensors.skate \
+        lights.msm7x27 \
         librpc \
         SkateParts \
         libmm-omxcore \

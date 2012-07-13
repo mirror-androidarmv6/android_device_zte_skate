@@ -5,6 +5,8 @@ on early-init
     mkdir /mnt/sdcard 0000 system system
 # for backwards compatibility
     symlink /mnt/sdcard /sdcard
+    chmod 7777 /data/radio/*
+    chown radio radio /data/radio/*
 
 service dhcp-service /system/bin/netcfg wlan0 dhcp
     class main
@@ -46,7 +48,7 @@ on boot
    write /sys/module/g_android/parameters/serial_number CM9-Skate
    write /sys/module/g_android/parameters/product_id 0x1351
 
-#create  WIFI filesystem structure
+# WiFi filesystem structure
     mkdir /data/misc 01771 system misc
     mkdir /data/misc/wifi 0770 system wifi
     mkdir /data/misc/wifi/sockets
@@ -66,6 +68,8 @@ on boot
 # For qmuxd socket
     mkdir /data/radio 0770 radio radio
     chown radio radio 0770 /data/radio
+    chmod 7777 /data/radio/*
+    chown radio radio /data/radio/*
 
     chown system system /sys/class/leds/green/blink
     chown system system /sys/class/leds/green/brightness

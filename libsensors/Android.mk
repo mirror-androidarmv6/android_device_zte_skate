@@ -26,7 +26,7 @@ LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 
 LOCAL_MODULE_TAGS := optional
 
-#LOCAL_CFLAGS := -D//ALOG_TAG=\"Sensors\"
+LOCAL_CFLAGS := -DLOG_TAG=\"Sensors\"
 LOCAL_SRC_FILES :=                                              \
                                 sensors.c                       \
                                 nusensors.cpp                   \
@@ -39,11 +39,11 @@ LOCAL_SRC_FILES :=                                              \
 LOCAL_SHARED_LIBRARIES := liblog libcutils
 LOCAL_PRELINK_MODULE := false
 
-include $(BUILD_SHARED_LIBRARY)
+#include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 
-#LOCAL_CFLAGS := -D//ALOG_TAG=\"ProxCal\"
+#LOCAL_CFLAGS := -DLOG_TAG=\"ProxCal\"
 LOCAL_SRC_FILES:= proxcal/prox_cal.c
 
 LOCAL_MODULE:= prox_cal
