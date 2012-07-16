@@ -29,7 +29,6 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 PRODUCT_PACKAGES := \
         lights.skate \
         sensors.skate \
-        lights.msm7x27 \
         librpc \
         SkateParts \
         libmm-omxcore \
@@ -38,9 +37,10 @@ PRODUCT_PACKAGES := \
         dexpreopt \
         libcamera \
         camera.msm7x27 \
-        gralloc.msm7x27 \
         copybit.msm7x27 \
-        hwcomposer.msm7x27
+        hwcomposer.msm7x27 \
+        libQcomUI \
+        hwcomposer.skate
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
@@ -77,6 +77,7 @@ PRODUCT_COPY_FILES := \
         device/zte/skate/media_profiles.xml:system/etc/media_profiles.xml \
         device/zte/skate/prebuilt/synaptics-rmi4-ts.idc:system/usr/idc/synaptics-rmi4-ts.idc \
         device/zte/skate/prebuilt/GooManager.apk:system/app/GooManager.apk \
+        device/zte/skate/prebuilt/gralloc.skate.so:system/lib/hw/gralloc.skate.so \
         device/zte/skate/prebuilt/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
         device/zte/skate/prebuilt/start_usb0.sh:system/etc/start_usb0.sh \
         device/zte/skate/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \

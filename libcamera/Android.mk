@@ -32,7 +32,7 @@ LOCAL_SHARED_LIBRARIES+= libdl
 endif
 
 LOCAL_MODULE:= libcamera
-#include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_SHARED_LIBRARY)
 
 ## Make camera wrapper
 
@@ -52,4 +52,4 @@ LOCAL_C_INCLUDES       := frameworks/base/services \
                           hardware/libhardware/include \
                           hardware
 
-#include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_SHARED_LIBRARY)

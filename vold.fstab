@@ -23,4 +23,4 @@
 ## Example of specifying a specific partition for mounts
 # dev_mount sdcard /sdcard 2 /devices/platform/goldfish_mmc.0 /devices/platform/msm_sdcc.2/mmc_host/mmc1
 
-dev_mount sdcard /mnt/sdcard auto /devices/platform/msm_sdcc.1/mmc_host/mmc0
+dev_mount sdcard /storage/sdcard0 auto /devices/platform/msm_sdcc.1/mmc_host/mmc0

@@ -39,11 +39,11 @@ LOCAL_SRC_FILES :=                                              \
 LOCAL_SHARED_LIBRARIES := liblog libcutils
 LOCAL_PRELINK_MODULE := false
 
-#include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 
-#LOCAL_CFLAGS := -DLOG_TAG=\"ProxCal\"
+LOCAL_CFLAGS := -DLOG_TAG=\"ProxCal\"
 LOCAL_SRC_FILES:= proxcal/prox_cal.c
 
 LOCAL_MODULE:= prox_cal
