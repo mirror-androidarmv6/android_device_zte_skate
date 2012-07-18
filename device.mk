@@ -39,8 +39,7 @@ PRODUCT_PACKAGES := \
         camera.msm7x27 \
         copybit.msm7x27 \
         hwcomposer.msm7x27 \
-        libQcomUI \
-        hwcomposer.skate
+        libQcomUI
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
@@ -75,6 +74,7 @@ PRODUCT_COPY_FILES := \
         device/zte/skate/AudioFilter.csv:system/etc/AudioFilter.csv \
         device/zte/skate/AutoVolumeControl.txt:system/etc/AutoVolumeControl.txt \
         device/zte/skate/media_profiles.xml:system/etc/media_profiles.xml \
+        device/zte/skate/media_codecs.xml:system/etc/media_codecs.xml \
         device/zte/skate/prebuilt/synaptics-rmi4-ts.idc:system/usr/idc/synaptics-rmi4-ts.idc \
         device/zte/skate/prebuilt/GooManager.apk:system/app/GooManager.apk \
         device/zte/skate/prebuilt/gralloc.skate.so:system/lib/hw/gralloc.skate.so \

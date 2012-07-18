@@ -89,8 +89,6 @@ on boot
     write /sys/devices/platform/mass_storage/lun0/file /dev/block/mmcblk0p1
     write /sys/bus/platform/drivers/msm_sdcc/msm_sdcc.1/polling 1
 
-    chmod 0777 /data/radio/qmux_connect_socket
-
 service qmuxd /system/bin/qmuxd 
     class main
 
@@ -103,6 +101,10 @@ on property:init.svc.bluetoothd=stopped
 
 # Testing if this fixes the /data/radio chmod requirement
 on property:init.svc.ril-daemon=running
+    chmod 0777 /data/radio/qmux_connect_socket
+
+# Testing if this fixes the /data/radio chmod requirement
+on property:init.svc.qmuxd=running
     chmod 0777 /data/radio/qmux_connect_socket
 
 service hci_qcomm_init /system/bin/log -t qcom-bluetooth -p i "hci_qcomm_init service requested"

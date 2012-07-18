@@ -21,13 +21,6 @@ on property:sys.usb.config=mass_storage
     write /sys/module/g_android/parameters/product_id 1353
     setprop sys.usb.state $sys.usb.config
 
-#on property:sys.usb.config=mtp
-#    setprop sys.usb.state $sys.usb.config
-
-#on property:sys.usb.config=mtp,adb
-#    start adbd
-#    setprop sys.usb.state $sys.usb.config
-
 on property:sys.usb.config=rndis
     write /sys/module/g_android/parameters/product_id 1365
     setprop sys.usb.state $sys.usb.config
@@ -41,16 +34,6 @@ on property:sys.usb.config=mass_storage,rndis,adb
     write /sys/module/g_android/parameters/product_id 1364
     start adbd
     setprop sys.usb.state $sys.usb.config
-
-#on property:sys.usb.config=ptp
-#    setprop sys.usb.state $sys.usb.config
-
-#on property:sys.usb.config=ptp,adb
-#    start adbd
-#    setprop sys.usb.state $sys.usb.config
-
-#on property:sys.usb.config=rndis,dm
-#    setprop sys.usb.state $sys.usb.config
 
 # Adding this in because adb is being removed from persist.sys.usb.config after booting
 on property:persist.service.adb.enable=1
