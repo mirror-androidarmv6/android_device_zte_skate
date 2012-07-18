@@ -80,8 +80,7 @@ PRODUCT_COPY_FILES := \
         device/zte/skate/prebuilt/gralloc.skate.so:system/lib/hw/gralloc.skate.so \
         device/zte/skate/prebuilt/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
         device/zte/skate/prebuilt/start_usb0.sh:system/etc/start_usb0.sh \
-        device/zte/skate/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
-        device/zte/skate/releasetools/extras.sh:system/bin/extras.sh
+        device/zte/skate/init.qcom.bt.sh:system/etc/init.qcom.bt.sh
 
 # WiFi
 PRODUCT_COPY_FILES += \

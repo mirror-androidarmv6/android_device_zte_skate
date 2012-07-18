@@ -23,5 +23,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
    ro.goo.board=skate \
    ro.goo.developerid=tilal6991 \
    ro.goo.version=$(shell date +%Y%m%d) \
-   ro.goo.rom=cfxskate
+   ro.goo.rom=cfx2skate
 endif
