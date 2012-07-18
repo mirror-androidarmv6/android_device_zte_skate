@@ -43,8 +43,8 @@ on boot
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
 # Setup android gadget
-   write /sys/module/g_android/parameters/serial_number CM9-Skate
-   write /sys/module/g_android/parameters/product_id 0x1351
+    write /sys/module/g_android/parameters/serial_number CM10-Skate
+    write /sys/module/g_android/parameters/product_id 0x1351
 
 # WiFi filesystem structure
     mkdir /data/misc 01771 system misc
@@ -56,12 +56,12 @@ on boot
     chown dhcp dhcp /data/misc/dhcp
     mkdir /data/system 0775 system system
 
-   mkdir /data/local
-   chmod 0777 /data/local
-   chown radio shell /data/local
-   mkdir /data/local/tmp
-   chmod 0777 /data/local/tmp
-   chown radio shell /data/local/tmp
+    mkdir /data/local
+    chmod 0777 /data/local
+    chown radio shell /data/local
+    mkdir /data/local/tmp
+    chmod 0777 /data/local/tmp
+    chown radio shell /data/local/tmp
 
     chown system system /sys/class/leds/green/blink
     chown system system /sys/class/leds/green/brightness
@@ -91,6 +91,7 @@ on boot
 
 service qmuxd /system/bin/qmuxd 
     class main
+    user radio
 
 on property:init.svc.bluetoothd=running
     write /sys/devices/virtual/bluetooth/hci0/idle_timeout 7000
@@ -99,15 +100,8 @@ on property:init.svc.bluetoothd=running
 on property:init.svc.bluetoothd=stopped
     stop abtfilt
 
-# Testing if this fixes the /data/radio chmod requirement
-on property:init.svc.ril-daemon=running
-    chmod 0777 /data/radio/qmux_connect_socket
-
-# Testing if this fixes the /data/radio chmod requirement
-on property:init.svc.qmuxd=running
-    chmod 0777 /data/radio/qmux_connect_socket
-
 service hci_qcomm_init /system/bin/log -t qcom-bluetooth -p i "hci_qcomm_init service requested"
+    class main
     user bluetooth
     group bluetooth net_bt_admin
     disabled
