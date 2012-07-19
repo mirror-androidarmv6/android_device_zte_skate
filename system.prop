@@ -21,7 +21,7 @@ persist.service.adb.enable=1
 dalvik.vm.dexopt-data-only=1
 dalvik.vm.execution-mode=int:jit
 
-persist.sys.use_dithering=1
+persist.sys.use_dithering=2
 com.qc.hardware=true
 
 ro.telephony.call_ring.delay=3000
