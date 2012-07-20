@@ -39,7 +39,8 @@ PRODUCT_PACKAGES := \
         camera.msm7x27 \
         copybit.msm7x27 \
         gralloc.msm7x27 \
-        libQcomUI
+        libQcomUI \
+        make_ext4fs
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
@@ -92,7 +93,6 @@ PRODUCT_COPY_FILES += \
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
         system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
-
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
