@@ -4,7 +4,7 @@ ro.telephony.ril.v3=icccardstatus,datacall,signalstrength,facilitylock
 ro.telephony.call_ring.multiple=false
 
 wifi.interface=wlan0
-wifi.supplicant_scan_interval=15
+wifi.supplicant_scan_interval=60
 
 debug.camcorder.disablemeta=1
 
@@ -20,11 +20,11 @@ persist.service.adb.enable=1
 
 dalvik.vm.dexopt-data-only=1
 dalvik.vm.execution-mode=int:jit
+dalvik.vm.heapstartsize=5m
+dalvik.vm.heapgrowthlimit=24m
+dalvik.vm.heapsize=64m
 
 persist.sys.use_dithering=2
 com.qc.hardware=true
 
 ro.telephony.call_ring.delay=3000
-
-# Uncomment to disable bootanimation
-# persist.sys.nobootanimation=1

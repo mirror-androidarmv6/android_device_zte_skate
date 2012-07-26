@@ -21,7 +21,6 @@
 
 DEVICE_PACKAGE_OVERLAYS := device/zte/skate/overlay
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
-$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
 PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
@@ -40,6 +39,7 @@ PRODUCT_PACKAGES := \
         copybit.msm7x27 \
         gralloc.msm7x27 \
         libQcomUI \
+        setup_fs \
         make_ext4fs
 
 # Live Wallpapers
