@@ -21,41 +21,28 @@ USE_CAMERA_STUB := true
 # Use the non-open-source parts, if they're present
 -include vendor/zte/skate/BoardConfigVendor.mk
 
+# Target and board properties
 TARGET_CPU_ABI := armeabi-v6l
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv6-vfp
+TARGET_NO_RADIOIMAGE := true
+TARGET_BOARD_PLATFORM := msm7x27
+TARGET_BOOTLOADER_BOARD_NAME := skate
+TARGET_NO_BOOTLOADER := true
+BOARD_PROVIDES_LIBRIL := true
+TARGET_SPECIFIC_HEADER_PATH := device/zte/skate/include
 
+# Recovery
 TARGET_PREBUILT_RECOVERY_KERNEL := device/zte/skate/recovery_kernel
 BOARD_CUSTOM_GRAPHICS := ../../../device/zte/skate/recovery/graphics.c
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/zte/skate/recovery/recovery_ui.c
 TARGET_RECOVERY_INITRC := device/zte/skate/recovery/recovery.rc
 
+# Kernel
 TARGET_KERNEL_SOURCE := kernel/zte/zte-kernel-msm7x27
 TARGET_KERNEL_CONFIG := cyanogen_skate_defconfig
-BUILD_KERNEL := true
 BOARD_KERNEL_BASE := 0x02600000
 BOARD_KERNEL_CMDLINE := androidboot.hardware=skate console=null
-
-TARGET_NO_BOOTLOADER := true
-TARGET_NO_RADIOIMAGE := true
-TARGET_BOARD_PLATFORM := msm7x27
-TARGET_BOOTLOADER_BOARD_NAME := skate
-
-# dev:    size   erasesize  name
-# mtd0: 00500000 00020000 "recovery"
-# mtd1: 00500000 00020000 "boot"
-# mtd2: 00180000 00020000 "splash"
-# mtd3: 00080000 00020000 "misc"
-# mtd4: 00200000 00020000 "cache"
-# mtd5: 08a00000 00020000 "system"
-# mtd6: 13ba0000 00020000 "userdata"
-# mtd7: 00020000 00020000 "oem"
-# mtd8: 00180000 00020000 "persist"
-BOARD_BOOTIMAGE_PARTITION_SIZE     := 0x00500000
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00600000
-BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 0x0dc00000
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x0a280000
-BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Wifi
 BOARD_WLAN_DEVICE := bcmdhd
@@ -71,40 +58,51 @@ WIFI_DRIVER_MODULE_NAME := "dhd"
 # Touchscreen
 BOARD_USE_LEGACY_TOUCHSCREEN := true
 
+# Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
-BOARD_PROVIDES_LIBRIL := true
-
-TARGET_SPECIFIC_HEADER_PATH := device/zte/skate/include
-
+# USB
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun0/file
 BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
 
+# QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DREFRESH_RATE=60
 BOARD_USES_QCOM_LIBS := true
 
+# Graphics
 BOARD_EGL_CFG := device/zte/skate/egl.cfg
 USE_OPENGL_RENDERER := true
 BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
 TARGET_USES_GENLOCK := true
 TARGET_FORCE_CPU_UPLOAD := true
-TARGET_BOOTANIMATION_PRELOAD := true
 
+# Browser
 WITH_JIT := true
 ENABLE_JSC_JIT := true
 JS_ENGINE := v8
 HTTP := chrome
 ENABLE_WEBGL := true
 
-COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT
-BOARD_USE_NASTY_PTHREAD_CREATE_HACK := true
-
 # FM Radio
 BOARD_FM_DEVICE := si4708
 BOARD_HAVE_FM_RADIO := true
 BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO -DFM_RADIO
 
-#TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/zte/skate/releasetools/ota_from_target_files
-
+# Partition sizes
+# dev:    size   erasesize  name
+# mtd0: 00500000 00020000 "recovery"
+# mtd1: 00500000 00020000 "boot"
+# mtd2: 00180000 00020000 "splash"
+# mtd3: 00080000 00020000 "misc"
+# mtd4: 00200000 00020000 "cache"
+# mtd5: 08a00000 00020000 "system"
+# mtd6: 13ba0000 00020000 "userdata"
+# mtd7: 00020000 00020000 "oem"
+# mtd8: 00180000 00020000 "persist"
+BOARD_BOOTIMAGE_PARTITION_SIZE     := 0x00500000
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00600000
+BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 0x0dc00000
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x0a280000
+BOARD_FLASH_BLOCK_SIZE := 131072
