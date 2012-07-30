@@ -36,7 +36,7 @@ PRODUCT_PACKAGES := \
         dexpreopt \
         libcamera \
         camera.msm7x27 \
-        copybit.msm7x27 \
+        copybit.skate \
         gralloc.msm7x27 \
         libQcomUI \
         setup_fs \
