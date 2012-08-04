@@ -3,10 +3,10 @@
    "repository": "zte-kernel-msm7x27",
    "target_path": "kernel/zte/zte-kernel-msm7x27",
    "branch": "jellybean"
- }
+ },
  {
    "repository": "android_device_zte_msm7x27-common",
-   "target_path": "device/zte/msm7x27-common"
+   "target_path": "device/zte/msm7x27-common",
    "branch": "jellybean"
  }
 ]
