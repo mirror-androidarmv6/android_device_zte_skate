@@ -14,31 +14,16 @@
 # limitations under the License.
 #
 
-# This variable is set first, so it can be overridden
-# by BoardConfigVendor.mk
-USE_CAMERA_STUB := true
-
 # Use the non-open-source parts, if they're present
+-include device/zte/msm7x27-common/BoardConfigCommon.mk
 -include vendor/zte/skate/BoardConfigVendor.mk
 
-TARGET_CPU_ABI := armeabi-v6l
-TARGET_CPU_ABI2 := armeabi
-TARGET_ARCH_VARIANT := armv6-vfp
-
 TARGET_PREBUILT_RECOVERY_KERNEL := device/zte/skate/recovery_kernel
-BOARD_CUSTOM_GRAPHICS := ../../../device/zte/skate/recovery/graphics.c
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/zte/skate/recovery/recovery_ui.c
 TARGET_RECOVERY_INITRC := device/zte/skate/recovery/recovery.rc
 
-TARGET_KERNEL_SOURCE := kernel/zte/zte-kernel-msm7x27
 TARGET_KERNEL_CONFIG := cyanogen_skate_defconfig
-BUILD_KERNEL := true
-BOARD_KERNEL_BASE := 0x02600000
 BOARD_KERNEL_CMDLINE := androidboot.hardware=skate console=null
 
-TARGET_NO_BOOTLOADER := true
-TARGET_NO_RADIOIMAGE := true
-TARGET_BOARD_PLATFORM := msm7x27
 TARGET_BOOTLOADER_BOARD_NAME := skate
 
 # Wifi
@@ -55,37 +40,7 @@ WIFI_DRIVER_MODULE_NAME := "dhd"
 # Touchscreen
 BOARD_USE_LEGACY_TOUCHSCREEN := true
 
-BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-
-BOARD_PROVIDES_LIBRIL := true
-
-TARGET_SPECIFIC_HEADER_PATH := device/zte/skate/include
-
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun0/file
-BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
-
-BOARD_USES_QCOM_HARDWARE := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DREFRESH_RATE=56 -DQCOM_ICS_COMPAT -DICS_CAMERA_BLOB -DQCOM_NO_SECURE_PLAYBACK
-BOARD_USES_QCOM_LIBS := true
-BOARD_NEEDS_MEMORYHEAPPMEM := true
-
-BOARD_EGL_CFG := device/zte/skate/egl.cfg
-USE_OPENGL_RENDERER := true
-BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
-TARGET_USES_GENLOCK := true
-TARGET_FORCE_CPU_UPLOAD := true
-
-WITH_JIT := true
-ENABLE_JSC_JIT := true
-JS_ENGINE := v8
-HTTP := chrome
-ENABLE_WEBGL := true
-
-# FM Radio
-BOARD_FM_DEVICE := si4708
-BOARD_HAVE_FM_RADIO := true
-BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO -DFM_RADIO
 
 # dev:    size   erasesize  name
 # mtd0: 00500000 00020000 "recovery"
