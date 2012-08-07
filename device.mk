@@ -21,7 +21,7 @@
 
 DEVICE_PACKAGE_OVERLAYS := device/zte/skate/overlay
 
-PRODUCT_PACKAGES := \
+PRODUCT_PACKAGES += \
         lights.skate \
         sensors.skate \
         SkateParts \
@@ -29,7 +29,7 @@ PRODUCT_PACKAGES := \
         audio.primary.skate \
         audio_policy.skate
 
-PRODUCT_COPY_FILES := \
+PRODUCT_COPY_FILES += \
         device/zte/skate/init.skate.rc:root/init.skate.rc \
         device/zte/skate/init.skate.usb.rc:root/init.skate.usb.rc \
         device/zte/skate/ueventd.skate.rc:root/ueventd.skate.rc \
