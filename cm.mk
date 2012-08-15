@@ -26,6 +26,12 @@ ifdef I_AM_TILAL
 PRODUCT_PROPERTY_OVERRIDES += \
    ro.goo.board=skate \
    ro.goo.developerid=tilal6991 \
-   ro.goo.version=$(shell date +%Y%m%d) \
+   ro.goo.version=$(shell date +%Y%m%d)
+ifdef NO_PB
+PRODUCT_PROPERTY_OVERRIDES += \
+   ro.goo.rom=cfx2skateslow
+else
+PRODUCT_PROPERTY_OVERRIDES += \
    ro.goo.rom=cfx2skate
+endif
 endif
