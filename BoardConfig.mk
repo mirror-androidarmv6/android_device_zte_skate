@@ -21,7 +21,7 @@
 TARGET_PREBUILT_RECOVERY_KERNEL := device/zte/skate/recovery_kernel
 TARGET_RECOVERY_INITRC := device/zte/skate/recovery/recovery.rc
 
-TARGET_KERNEL_CONFIG := cyanogen_skate_recovery_defconfig
+TARGET_KERNEL_CONFIG := cyanogen_skate_defconfig
 BOARD_KERNEL_CMDLINE := androidboot.hardware=skate console=null
 
 TARGET_BOOTLOADER_BOARD_NAME := skate
