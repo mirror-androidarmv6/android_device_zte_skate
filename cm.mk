@@ -25,8 +25,13 @@ PRODUCT_RELEASE_NAME := Skate
 
 ifdef I_AM_TILAL
 PRODUCT_PROPERTY_OVERRIDES += \
-   ro.goo.board=skate \
-   ro.goo.developerid=tilal6991 \
-   ro.goo.version=$(shell date +%Y%m%d) \
-   ro.goo.rom=cfx2skate
+    ro.goo.board=skate \
+    ro.goo.developerid=tilal6991 \
+    ro.goo.version=$(shell date -u +%Y%m%d) \
+    ro.goo.rom=cfx2skate
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    otaupdater.otaid=cfx2skate \
+    otaupdater.otatime=$(shell date -u +%Y%m%d-%H%m) \
+    otaupdater.otaver=$(shell date -u +%Y%m%d)
 endif
