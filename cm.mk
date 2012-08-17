@@ -14,7 +14,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=skate BUILD_ID=JRO03C BUILD_FINGERP
 
 ifneq ($(CFX_BUILD),)
 PRODUCT_NAME := cfx_skate
-$(call inherit-product-if-exists, vendor/cfx/configs/common.mk)
+$(call inherit-product, vendor/cfx/configs/common.mk)
 else
 PRODUCT_NAME := cm_skate
 endif
