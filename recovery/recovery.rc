@@ -29,6 +29,9 @@ on boot
     hostname localhost
     domainname localdomain
 
+    write /sys/class/leds/lcd-backlight/brightness 255
+    write /sys/class/leds/button-backlight/brightness 255
+
     class_start default
 
     setprop service.adb.root 1
