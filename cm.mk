@@ -14,6 +14,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=skate BUILD_ID=JRO03C BUILD_FINGERP
 
 ifneq ($(CFX_BUILD),)
 PRODUCT_NAME := cfx_skate
+$(call inherit-product-if-exists, vendor/cfx/configs/common.mk)
 else
 PRODUCT_NAME := cm_skate
 endif
@@ -22,16 +23,3 @@ PRODUCT_BRAND := ZTE
 PRODUCT_MANUFACTURER := ZTE
 PRODUCT_MODEL := Skate
 PRODUCT_RELEASE_NAME := Skate
-
-ifdef I_AM_TILAL
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.goo.board=skate \
-    ro.goo.developerid=tilal6991 \
-    ro.goo.version=$(shell date -u +%Y%m%d) \
-    ro.goo.rom=cfx2skate
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    otaupdater.otaid=cfx2skate \
-    otaupdater.otatime=$(shell date -u +%Y%m%d-%H%m) \
-    otaupdater.otaver=$(shell date -u +%Y%m%d)
-endif
