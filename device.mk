@@ -29,6 +29,10 @@ PRODUCT_PACKAGES += \
         audio.primary.skate \
         audio_policy.skate
 
+# Enable repeatable keys in CWM
+PRODUCT_PROPERTY_OVERRIDES += \
+        ro.cwm.enable_key_repeat=true
+
 PRODUCT_COPY_FILES += \
         device/zte/skate/init.skate.rc:root/init.skate.rc \
         device/zte/skate/init.skate.usb.rc:root/init.skate.usb.rc \
