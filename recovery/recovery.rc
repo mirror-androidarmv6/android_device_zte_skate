@@ -11,26 +11,29 @@ on init
     export ANDROID_DATA /data
     export EXTERNAL_STORAGE /sdcard
 
-    symlink /system/etc /etc
+# Max brightness
+    write /sys/class/leds/lcd-backlight/brightness 255
+    write /sys/class/leds/button-backlight/brightness 255
 
     mkdir /boot
     mkdir /sdcard
+    mkdir /mnt
     mkdir /sd-ext
     mkdir /datadata
     mkdir /emmc
     mkdir /system
+    symlink /system/etc /etc
     mkdir /data
     mkdir /cache
     mount /tmp /tmp tmpfs
+    mount /dev/block/vold/179:1 /sdcard/ vfat
+    symlink /sdcard /mnt/sdcard
 
 on boot
 
     ifup lo
     hostname localhost
     domainname localdomain
-
-    write /sys/class/leds/lcd-backlight/brightness 255
-    write /sys/class/leds/button-backlight/brightness 255
 
     class_start default
 

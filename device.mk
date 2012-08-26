@@ -22,6 +22,7 @@
 DEVICE_PACKAGE_OVERLAYS := device/zte/skate/overlay
 
 PRODUCT_PACKAGES += \
+        camera.skate \
         lights.skate \
         sensors.skate \
         SkateParts \

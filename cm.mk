@@ -2,7 +2,8 @@
 $(call inherit-product, device/zte/skate/skate.mk)
 
 # Correct bootanimation size for the screen
-TARGET_BOOTANIMATION_NAME := vertical-480x800
+TARGET_SCREEN_HEIGHT := 800
+TARGET_SCREEN_WIDTH := 480
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/gsm.mk)
