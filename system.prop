@@ -24,8 +24,8 @@ dalvik.vm.heapstartsize=5m
 dalvik.vm.heapgrowthlimit=24m
 dalvik.vm.heapsize=64m
 
+ro.cwm.enable_key_repeat=true
 persist.sys.use_dithering=2
 com.qc.hardware=true
-gfx.highend_override=yes
 
 ro.telephony.call_ring.delay=3000

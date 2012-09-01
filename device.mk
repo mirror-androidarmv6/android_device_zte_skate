@@ -22,11 +22,9 @@
 DEVICE_PACKAGE_OVERLAYS := device/zte/skate/overlay
 
 PRODUCT_PACKAGES += \
-        camera.skate \
         lights.skate \
         sensors.skate \
         SkateParts \
-        copybit.skate \
         audio.primary.skate \
         audio_policy.skate
 
@@ -40,7 +38,6 @@ PRODUCT_COPY_FILES += \
         device/zte/skate/ueventd.skate.rc:root/ueventd.skate.rc \
         device/zte/skate/prebuilt/skate_keypad.kl:/system/usr/keylayout/skate_keypad.kl \
         device/zte/skate/prebuilt/synaptics-rmi4-ts.idc:system/usr/idc/synaptics-rmi4-ts.idc \
-        device/zte/skate/prebuilt/gralloc.skate.so:system/lib/hw/gralloc.skate.so \
         device/zte/skate/prebuilt/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
         device/zte/skate/init.qcom.bt.sh:system/etc/init.qcom.bt.sh
 
