@@ -23,6 +23,9 @@ dalvik.vm.execution-mode=int:jit
 dalvik.vm.heapstartsize=5m
 dalvik.vm.heapgrowthlimit=24m
 dalvik.vm.heapsize=64m
+dalvik.vm.verify_bytecode=false
+dalvik.vm.checkjni=0
+ro.kernel.android.checkjni=0
 
 ro.cwm.enable_key_repeat=true
 persist.sys.use_dithering=2
