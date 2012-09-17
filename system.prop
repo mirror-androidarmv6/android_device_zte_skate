@@ -29,6 +29,10 @@ ro.kernel.android.checkjni=0
 
 ro.cwm.enable_key_repeat=true
 persist.sys.use_dithering=2
+
+debug.qctwa.statusbar=1
+debug.qctwa.preservebuf=1
 com.qc.hardware=true
+ro.max.fling_velocity=4000
 
 ro.telephony.call_ring.delay=3000
