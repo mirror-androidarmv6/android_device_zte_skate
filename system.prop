@@ -1,7 +1,7 @@
 # RIL
 rild.libpath=/system/lib/libril-qc-1.so
 rild.libargs=-d /dev/smd0
-ro.telephony.ril.v3=icccardstatus,datacall,signalstrength,facilitylock,singlepdp
+ro.telephony.ril.v3=icccardstatus,datacall,signalstrength,facilitylock
 ro.telephony.call_ring.multiple=false
 ro.telephony.call_ring.delay=3000
 
@@ -38,3 +38,6 @@ dalvik.vm.execution-mode=int:jit
 dalvik.vm.verify_bytecode=false
 dalvik.vm.checkjni=0
 ro.kernel.android.checkjni=0
+
+# zRam
+ro.zram.default=0
