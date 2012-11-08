@@ -20,4 +20,7 @@
          Setting to false will disable Volume Rocker Wake support -->
     <bool name="config_show_volumeRockerWake">false</bool>
 
+    <!-- Show Expanded Desktop preference -->
+    <bool name="config_show_expandedDesktop">true</bool>
+
 </resources>

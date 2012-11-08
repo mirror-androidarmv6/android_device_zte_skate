@@ -18,6 +18,5 @@
      for different hardware or product builds. -->
 <resources>
     <bool name="ignore_sim_network_locked_events">true</bool>
-
     <bool name="send_mic_mute_to_AudioManager">true</bool>
 </resources>
