@@ -14,11 +14,6 @@
 # limitations under the License.
 #
 
-# This file includes all definitions that apply to ALL skate devices, and
-# are also specific to skate devices
-#
-# Everything in this directory will become public
-
 DEVICE_PACKAGE_OVERLAYS := device/zte/skate/overlay
 
 PRODUCT_PACKAGES += \
