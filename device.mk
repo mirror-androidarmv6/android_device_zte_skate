@@ -14,14 +14,12 @@
 # limitations under the License.
 #
 
-DEVICE_PACKAGE_OVERLAYS := device/zte/skate/overlay
-
 PRODUCT_PACKAGES += \
+        audio.primary.skate \
+        audio_policy.skate \
         lights.skate \
         sensors.skate \
-        SkateParts \
-        audio.primary.skate \
-        audio_policy.skate
+        SkateParts
 
 # Enable repeatable keys in CWM
 PRODUCT_PROPERTY_OVERRIDES += \

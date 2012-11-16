@@ -13,12 +13,7 @@ $(call inherit-product, vendor/cm/config/common_mini_phone.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=skate BUILD_ID=JRO03C BUILD_FINGERPRINT=ZTE/N880E_JB/atlas40:4.1.1/JRO03C/eng.songsy.20120718.233441:eng/test-keys PRIVATE_BUILD_DESC="N880E_JB-eng 4.1.1 JRO03C eng.songsy.20120718.233441 test-keys" BUILD_NUMBER=eng.songsy.20120718.233441
 
-ifneq ($(CFX_BUILD),)
-PRODUCT_NAME := cfx_skate
-$(call inherit-product, vendor/cfx/configs/common.mk)
-else
 PRODUCT_NAME := cm_skate
-endif
 PRODUCT_DEVICE := skate
 PRODUCT_BRAND := ZTE
 PRODUCT_MANUFACTURER := ZTE
