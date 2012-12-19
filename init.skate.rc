@@ -7,14 +7,6 @@ on early-init
     symlink /storage/sdcard0 /sdcard
     export EXTERNAL_STORAGE /storage/sdcard0
 
-service dhcp-service /system/bin/netcfg wlan0 dhcp
-    class main
-    oneshot
-
-on property:dev.bootcomplete=1
-    stop dhcp-service
-    start dhcp-service
-
 on boot
 
 # cpufreq configurations
@@ -43,7 +35,7 @@ on boot
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
 # Setup android gadget
-    write /sys/module/g_android/parameters/serial_number CM10-Skate
+    write /sys/module/g_android/parameters/serial_number CM10.1-Skate
     write /sys/module/g_android/parameters/product_id 0x1351
 
 # WiFi filesystem structure
@@ -63,6 +55,7 @@ on boot
     chmod 0777 /data/local/tmp
     chown radio shell /data/local/tmp
 
+# Lights
     chown system system /sys/class/leds/green/blink
     chown system system /sys/class/leds/green/brightness
     chown system system /sys/class/leds/green/grpfreq
@@ -150,18 +143,10 @@ service akmd /system/bin/akmd8962
     user root
     oneshot
 
-on property:persist.service.zram=10
-    start compcache
+service dhcp-service /system/bin/netcfg wlan0 dhcp
+    class main
+    oneshot
 
-on property:persist.service.zram=30
-    start compcache
-
-on property:persist.service.zram=50
-    start compcache
-
-# compcache - handle at boot
-service compcache /system/bin/handle_compcache
-    class main 	
-    user root
-    group root
-    disabled
+on property:dev.bootcomplete=1
+    stop dhcp-service
+    start dhcp-service
