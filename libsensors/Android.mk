@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+ifeq ($(TARGET_DEVICE),skate)
+
 LOCAL_PATH := $(call my-dir)
 
 ifneq ($(TARGET_SIMULATOR),true)
@@ -20,7 +22,7 @@ ifneq ($(TARGET_SIMULATOR),true)
 # hw/<SENSORS_HARDWARE_MODULE_ID>.<ro.product.board>.so
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := sensors.skate
+LOCAL_MODULE := sensors.$(TARGET_DEVICE)
 
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 
@@ -53,3 +55,4 @@ LOCAL_SHARED_LIBRARIES := liblog
 include $(BUILD_EXECUTABLE)
 
 endif # !TARGET_SIMULATOR
+endif

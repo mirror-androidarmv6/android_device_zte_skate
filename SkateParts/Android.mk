@@ -1,3 +1,4 @@
+ifeq ($(TARGET_DEVICE),skate)
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
@@ -15,3 +16,4 @@ LOCAL_REQUIRED_MODULES := prox_cal
 include $(BUILD_PACKAGE)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
+endif

@@ -23,7 +23,8 @@ TARGET_PREBUILT_RECOVERY_KERNEL := device/zte/skate/recovery_kernel
 TARGET_RECOVERY_INITRC := device/zte/skate/recovery/recovery.rc
 TARGET_KERNEL_CONFIG := skate_jb_defconfig
 BOARD_KERNEL_CMDLINE := androidboot.hardware=skate console=null
-TARGET_BOOTLOADER_BOARD_NAME := skate
+TARGET_BOOTLOADER_NAME := skate
+TARGET_OTA_ASSERT_DEVICE := skate
 
 # Wifi
 WPA_SUPPLICANT_VERSION := VER_0_8_X
