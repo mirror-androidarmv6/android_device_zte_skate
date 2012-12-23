@@ -12,6 +12,10 @@
    "target_path": "device/zte/msm7x27-common",
    "branch": "cm-10.1"
  }, {
+   "repository": "android_vendor_qcom_msm7x27",
+   "target_path": "vendor/qcom/msm7x27",
+   "branch": "cm-10.1"
+ }, {
    "repository": "proprietary_vendor_zte",
    "target_path": "vendor/zte",
    "branch": "cm-10.1"

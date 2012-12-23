@@ -14,11 +14,10 @@
 # limitations under the License.
 #
 
+include device/zte/msm7x27-common/common.mk
+$(call inherit-product, vendor/zte/skate/skate-vendor.mk)
+
 PRODUCT_PACKAGES += \
-        audio.primary.skate \
-        audio_policy.skate \
-        lights.skate \
-        sensors.skate \
         SkateParts
 
 PRODUCT_COPY_FILES += \
@@ -40,6 +39,3 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
          frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
          frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
-
--include device/zte/msm7x27-common/common.mk
-$(call inherit-product-if-exists, vendor/zte/skate/skate-vendor.mk)
