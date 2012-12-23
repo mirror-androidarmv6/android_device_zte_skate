@@ -43,6 +43,7 @@ BOARD_USE_LEGACY_TOUCHSCREEN := true
 # Bluetooth
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUEDROID_VENDOR_CONF := device/zte/skate/bluetooth/libbt_vndcfg.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/zte/skate/bluetooth
 
 # dev:    size   erasesize  name
 # mtd0: 00500000 00020000 "recovery"
