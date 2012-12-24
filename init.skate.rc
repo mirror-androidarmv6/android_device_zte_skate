@@ -38,10 +38,6 @@ on boot
     write /sys/module/g_android/parameters/serial_number CM10.1-Skate
     write /sys/module/g_android/parameters/product_id 0x1351
 
-# WiFi filesystem structure
-    mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    mkdir /data/misc/dhcp 0770 dhcp dhcp
-
     mkdir /data/local
     chmod 0777 /data/local
     chown radio shell /data/local
@@ -75,6 +71,11 @@ on boot
 # Enable MASS storage on SDCARD
     write /sys/devices/platform/mass_storage/lun0/file /dev/block/mmcblk0p1
     write /sys/bus/platform/drivers/msm_sdcc/msm_sdcc.1/polling 1
+
+on post-fs-data
+# Create the directories used by the Wireless subsystem
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
 
 service qmuxd /system/bin/qmuxd 
     class main
