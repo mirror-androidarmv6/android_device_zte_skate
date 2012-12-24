@@ -27,16 +27,15 @@ TARGET_BOOTLOADER_NAME := skate
 TARGET_OTA_ASSERT_DEVICE := skate
 
 # Wifi
+BOARD_WLAN_DEVICE := bcmdhd
 WPA_SUPPLICANT_VERSION := VER_0_8_X
-BOARD_WLAN_DEVICE := bcm4329
-BOARD_WEXT_NO_COMBO_SCAN := true
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
-BOARD_HAVE_LEGACY_HOSTAPD := true
-BOARD_HOSTAPD_NO_ENTROPY := true
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
+WIFI_BAND := 802_11_ABG
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/dhd.ko"
 WIFI_DRIVER_FW_PATH_AP := "/system/etc/fw_4319.bin"
 WIFI_DRIVER_FW_PATH_STA := "/system/etc/fw_4319_apsta.bin"
-WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/fw_4319.bin,nvram_path=/system/etc/nv_4319.txt iface_name=wlan"
+WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/fw_4319.bin nvram_path=/system/etc/nv_4319.txt iface_name=wlan"
 WIFI_DRIVER_MODULE_NAME := "dhd"
 
 # Touchscreen
