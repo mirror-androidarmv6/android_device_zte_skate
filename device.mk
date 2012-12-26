@@ -21,13 +21,13 @@ PRODUCT_PACKAGES += \
         SkateParts
 
 PRODUCT_COPY_FILES += \
-        device/zte/skate/init.skate.rc:root/init.skate.rc \
-        device/zte/skate/init.skate.usb.rc:root/init.skate.usb.rc \
-        device/zte/skate/ueventd.skate.rc:root/ueventd.skate.rc \
+        device/zte/skate/ramdisk/init.skate.rc:root/init.skate.rc \
+        device/zte/skate/ramdisk/init.skate.usb.rc:root/init.skate.usb.rc \
+        device/zte/skate/ramdisk/ueventd.skate.rc:root/ueventd.skate.rc \
         device/zte/skate/prebuilt/skate_keypad.kl:/system/usr/keylayout/skate_keypad.kl \
         device/zte/skate/prebuilt/synaptics-rmi4-ts.idc:system/usr/idc/synaptics-rmi4-ts.idc \
         device/zte/skate/prebuilt/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
-        device/zte/skate/init.qcom.bt.sh:system/etc/init.qcom.bt.sh
+        device/zte/skate/bluetooth/init.qcom.bt.sh:system/etc/init.qcom.bt.sh
 
 # WiFi
 PRODUCT_COPY_FILES += \
@@ -38,4 +38,5 @@ PRODUCT_COPY_FILES += \
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
          frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+         frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
          frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml

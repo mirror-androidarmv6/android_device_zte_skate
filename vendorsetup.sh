@@ -14,5 +14,4 @@
 # limitations under the License.
 #
 
-add_lunch_combo zte_skate-userdebug
 add_lunch_combo zte_skate-eng
