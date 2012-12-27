@@ -27,11 +27,9 @@ TARGET_BOOTLOADER_NAME := skate
 TARGET_OTA_ASSERT_DEVICE := skate
 
 # Wifi
-BOARD_WLAN_DEVICE := bcmdhd
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
-WIFI_BAND := 802_11_ABG
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_wext
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/dhd.ko"
 WIFI_DRIVER_FW_PATH_AP := "/system/etc/fw_4319.bin"
 WIFI_DRIVER_FW_PATH_STA := "/system/etc/fw_4319_apsta.bin"

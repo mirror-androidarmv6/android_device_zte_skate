@@ -26,8 +26,7 @@ PRODUCT_COPY_FILES += \
         device/zte/skate/ramdisk/ueventd.skate.rc:root/ueventd.skate.rc \
         device/zte/skate/prebuilt/skate_keypad.kl:/system/usr/keylayout/skate_keypad.kl \
         device/zte/skate/prebuilt/synaptics-rmi4-ts.idc:system/usr/idc/synaptics-rmi4-ts.idc \
-        device/zte/skate/prebuilt/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
-        device/zte/skate/bluetooth/init.qcom.bt.sh:system/etc/init.qcom.bt.sh
+        device/zte/skate/prebuilt/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc
 
 # WiFi
 PRODUCT_COPY_FILES += \

@@ -34,10 +34,6 @@ on boot
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
-# Setup android gadget
-    write /sys/module/g_android/parameters/serial_number CM10.1-Skate
-    write /sys/module/g_android/parameters/product_id 0x1351
-
     mkdir /data/local
     chmod 0777 /data/local
     chown radio shell /data/local
@@ -92,13 +88,6 @@ service hci_qcomm_init /system/bin/log -t qcom-bluetooth -p i "hci_qcomm_init se
     class main
     user bluetooth
     group bluetooth net_bt_admin
-    disabled
-    oneshot
-
-service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
-    class main
-    user root
-    group qcom_oncrpc bluetooth net_bt_admin system
     disabled
     oneshot
 
