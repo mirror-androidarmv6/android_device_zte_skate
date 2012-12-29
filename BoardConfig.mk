@@ -15,8 +15,8 @@
 #
 
 # Use the non-open-source parts, if they're present
--include device/zte/msm7x27-common/BoardConfigCommon.mk
--include vendor/zte/skate/BoardConfigVendor.mk
+include device/zte/msm7x27-common/BoardConfigCommon.mk
+include vendor/zte/skate/BoardConfigVendor.mk
 
 # Kernel and target stuff
 TARGET_PREBUILT_RECOVERY_KERNEL := device/zte/skate/prebuilt/recovery_kernel
@@ -36,9 +36,6 @@ WIFI_DRIVER_FW_PATH_AP := "/system/etc/fw_4319.bin"
 WIFI_DRIVER_FW_PATH_STA := "/system/etc/fw_4319_apsta.bin"
 WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/fw_4319.bin nvram_path=/system/etc/nv_4319.txt iface_name=wlan"
 WIFI_DRIVER_MODULE_NAME := "dhd"
-
-# Touchscreen
-BOARD_USE_LEGACY_TOUCHSCREEN := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH_BCM := true
