@@ -1,6 +1,10 @@
 on early-init
     start ueventd
 
+# Setup android gadget
+   write /sys/module/g_android/parameters/serial_number CWM-Skate
+   write /sys/module/g_android/parameters/product_id 0x1354
+
 on init
     export PATH /sbin
     export ANDROID_ROOT /system
