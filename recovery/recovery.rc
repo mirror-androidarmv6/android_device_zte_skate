@@ -29,6 +29,10 @@ on init
     mount /dev/block/vold/179:1 /sdcard/ vfat
     symlink /sdcard /mnt/sdcard
 
+# ADB sideload permissions
+    chown root shell /tmp
+    chmod 0775 /tmp
+
 on boot
 
     ifup lo
