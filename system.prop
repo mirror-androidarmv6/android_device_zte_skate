@@ -15,7 +15,6 @@ ro.max.fling_velocity=4000
 ro.sf.lcd_density=240
 ro.sf.hwrotation=180
 qemu.sf.lcd_density=240
-debug.hwui.disable_vsync=true
 debug.gr.numframebuffers=3
 
 # USB Mass Storage
