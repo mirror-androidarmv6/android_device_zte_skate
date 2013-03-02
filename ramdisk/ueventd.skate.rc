@@ -14,3 +14,4 @@
 /dev/pm_monitor      0770   radio     radio
 /dev/akm8962_aot     0777   system    system
 /dev/akm8962_dev     0777   system    system
+/dev/ttyHS0          0660   bluetooth net_bt_stack
