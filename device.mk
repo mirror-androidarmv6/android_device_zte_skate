@@ -18,9 +18,11 @@ $(call inherit-product, device/zte/msm7x27-common/common.mk)
 $(call inherit-product, vendor/zte/skate/skate-vendor.mk)
 $(call inherit-product-if-exists, device/zte/skate/packages.mk)
 
+# Proximity sensor calibration
 PRODUCT_PACKAGES += \
         SkateParts
 
+# Misc
 PRODUCT_COPY_FILES += \
         device/zte/skate/ramdisk/init.skate.rc:root/init.skate.rc \
         device/zte/skate/ramdisk/init.skate.usb.rc:root/init.skate.usb.rc \

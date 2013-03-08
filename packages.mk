@@ -17,4 +17,5 @@
 PRODUCT_PACKAGES += \
     Email \
     Chronus \
-    LockClock
+    LockClock \
+    cLock
