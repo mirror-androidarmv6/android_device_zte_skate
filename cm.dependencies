@@ -1,5 +1,10 @@
 [
  {
+   "account":      "grigorig",
+   "repository":   "android_packages_apps_Effem",
+   "target_path":  "packages/apps/Effem"
+   "revision":     "master"
+ }, {
    "repository": "android_kernel_zte_msm7x27",
    "target_path": "kernel/zte/msm7x27",
    "branch": "cm-10.1"
