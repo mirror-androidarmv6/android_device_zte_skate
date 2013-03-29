@@ -1,8 +1,8 @@
 [
  {
-   "repository":   "android_packages_apps_Effem",
-   "target_path":  "packages/apps/Effem",
-   "branch":     "master"
+   "repository": "android_packages_apps_Effem",
+   "target_path": "packages/apps/Effem",
+   "branch": "master"
  }, {
    "repository": "android_kernel_zte_msm7x27",
    "target_path": "kernel/zte/msm7x27",
