@@ -37,6 +37,12 @@ PRODUCT_COPY_FILES += \
         device/zte/skate/firmware/fw_4319_apsta.bin:system/etc/fw_4319_apsta.bin \
         device/zte/skate/firmware/nv_4319.txt:system/etc/nv_4319.txt
 
+# Bluetooth configuration files
+PRODUCT_COPY_FILES += \
+        device/zte/skate/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
+        system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf \
+        device/zte/skate/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
+
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
          frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
