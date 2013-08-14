@@ -33,7 +33,7 @@
 #
 # 2) in start_hci_attach() - use BCM sleep switch instead of default bluetooth sleep switch to make
 #    BT release wake lock on suspend
-#    
+#
 
 # DEFAULT BT sleep switch
 BLUETOOTH_SLEEP_PATH=/proc/bluetooth/sleep/proto
