@@ -21,7 +21,7 @@ include vendor/zte/skate/BoardConfigVendor.mk
 # Kernel and target stuff
 TARGET_PREBUILT_RECOVERY_KERNEL := device/zte/skate/recovery/recovery_kernel
 TARGET_RECOVERY_INITRC := device/zte/skate/recovery/recovery.rc
-TARGET_RECOVERY_FSTAB := device/zte/skate/recovery/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/zte/skate/fstab.skate
 TARGET_KERNEL_CONFIG := skate_jb_defconfig
 BOARD_KERNEL_CMDLINE := androidboot.hardware=skate console=null
 TARGET_BOOTLOADER_NAME := skate
