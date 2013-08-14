@@ -14,6 +14,11 @@
 # limitations under the License.
 #
 
+# Define BOARD_HAVE_BLUETOOTH_BLUEZ before device/qcom/msm7x27/BoardConfigCommon.mk
+# Bluetooth
+BOARD_HAVE_BLUETOOTH_BLUEZ := true
+BOARD_HAVE_BLUETOOTH_BCM := true
+
 # Use the non-open-source parts, if they're present
 include device/zte/msm7x27-common/BoardConfigCommon.mk
 include vendor/zte/skate/BoardConfigVendor.mk
@@ -27,6 +32,12 @@ BOARD_KERNEL_CMDLINE := androidboot.hardware=skate console=null
 TARGET_BOOTLOADER_NAME := skate
 TARGET_OTA_ASSERT_DEVICE := skate
 
+# Graphics
+BOARD_EGL_NEEDS_LEGACY_FB := true
+TARGET_NO_HW_VSYNC := false
+COMMON_GLOBAL_CFLAGS += -DANCIENT_GL
+COMMON_GLOBAL_CFLAGS += -DREFRESH_RATE=60
+
 # Wifi
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_WLAN_DEVICE := bcmdhd
@@ -38,11 +49,6 @@ WIFI_DRIVER_FW_PATH_STA := "/system/etc/fw_4319_apsta.bin"
 WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/fw_4319.bin nvram_path=/system/etc/nv_4319.txt iface_name=wlan"
 WIFI_DRIVER_MODULE_NAME := "dhd"
 WIFI_DRIVER_LOADER_REUSE := true
-
-# Bluetooth
-BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_BLUEDROID_VENDOR_CONF := device/zte/skate/bluetooth/libbt_vndcfg.txt
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/zte/skate/bluetooth
 
 # dev:    size   erasesize  name
 # mtd0: 00500000 00020000 "recovery"
