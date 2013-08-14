@@ -24,6 +24,7 @@ PRODUCT_PACKAGES += \
 
 # Misc
 PRODUCT_COPY_FILES += \
+        device/zte/skate/ramdisk/fstab.skate:root/fstab.skate \
         device/zte/skate/ramdisk/init.skate.rc:root/init.skate.rc \
         device/zte/skate/ramdisk/init.skate.usb.rc:root/init.skate.usb.rc \
         device/zte/skate/ramdisk/ueventd.skate.rc:root/ueventd.skate.rc \
