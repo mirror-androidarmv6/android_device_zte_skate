@@ -1,11 +1,47 @@
 import init.skate.usb.rc
 
 on early-init
-    mkdir /storage 0050 system sdcard_r
-    mkdir /storage/sdcard0 0000 system system
+
+    mount debugfs /sys/kernel/debug /sys/kernel/debug
+
+on init
+   
+    # sdcard
+    mkdir /storage 0050 root sdcard_r
+    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
+    mkdir /storage/sdcard0 0700 root root
+
+    # symlink
     symlink /storage/sdcard0 /mnt/sdcard
     symlink /storage/sdcard0 /sdcard
     export EXTERNAL_STORAGE /storage/sdcard0
+
+    # sd-ext
+    mkdir /sd-ext 0771 system system
+    export SD_EXT_DIRECTORY /sd-ext
+
+on fs
+    # Mount /system rw first to give the filesystem a chance to save a checkpoint
+    mount yaffs2 mtd@system /system
+    mount yaffs2 mtd@system /system ro remount
+    mount yaffs2 mtd@userdata /data nosuid nodev
+    mount yaffs2 mtd@cache /cache nosuid nodev
+    
+    # zRAM
+    swapon_all /fstab.skate
+
+   # cutils/installd wants a media dir
+    mkdir /data/media 0770 system system
+    mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
+
+
+on post-fs-data
+    # Create the directories used by the Wireless subsystem
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
+    
+    # zRAM
+    write /proc/sys/vm/page-cluster 0
 
 on boot
 
@@ -30,8 +66,9 @@ on boot
     write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 500000
     write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold 90
     write /sys/devices/system/cpu/cpufreq/ondemand/down_threshold 30
+# Kernel Samepage Merging (KSM)
     write /sys/kernel/mm/ksm/sleep_millisecs 4000
-    write /sys/kernel/mm/ksm/pages_to_scan 128
+    write /sys/kernel/mm/ksm/pages_to_scan 256
     write /sys/kernel/mm/ksm/run 1
 
 # Setup charging
@@ -93,16 +130,19 @@ on boot
     chown system system /sys/devices/platform/android_usb/remote_wakeup
 
 # Enable MASS storage on SDCARD
-    write /sys/devices/platform/mass_storage/lun0/file /dev/block/mmcblk0p1
-    write /sys/bus/platform/drivers/msm_sdcc/msm_sdcc.1/polling 1
+#    write /sys/devices/platform/mass_storage/lun0/file /dev/block/mmcblk0p1
+#    write /sys/bus/platform/drivers/msm_sdcc/msm_sdcc.1/polling 1
 
-on fs
-    mount_all /fstab.skate
-
-on post-fs-data
-# Create the directories used by the Wireless subsystem
+# wifi
+    mkdir /data/misc 01771 system misc
+    mkdir /data/misc/wifi 0770 system wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    chmod 0770 /data/misc/wifi/sockets
     mkdir /data/misc/dhcp 0770 dhcp dhcp
+    chown dhcp dhcp /data/misc/dhcp
+    mkdir /data/system 0775 system system
+
+setprop vold.post_fs_data_done 1
 
 service qmuxd /system/bin/qmuxd 
     class main
@@ -133,13 +173,23 @@ on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd_wlan0
 
 # WPA SETTINGS
-service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant -Dwext -iwlan0 -W -c/data/misc/wifi/wpa_supplicant.conf
+
+service wpa_supplicant /system/bin/wpa_supplicant \
+    -iwlan0 -Dnl80211,wext -c/data/misc/wifi/wpa_supplicant.conf \
+    -e/data/misc/wifi/entropy.bin \
+    -O/data/misc/wifi/sockets -g@android:wpa_wlan0
     class main
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
 
-service dhcpcd_wlan0 /system/bin/dhcpcd -ABDKL
+# SDcard daemon
+
+service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
+    class late_start
+    disabled
+
+service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL
     class main
     disabled
     oneshot
@@ -149,12 +199,12 @@ service iprenew_wlan0 /system/bin/dhcpcd -n
     disabled
     oneshot
 
-service dhcpcd_bnep0 /system/bin/dhcpcd -ABDKL
+service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
     class main
     disabled
     oneshot
 
-service iprenew_bnep0 /system/bin/dhcpcd -n
+service iprenew_bt-pan /system/bin/dhcpcd -n
     class main
     disabled
     oneshot
@@ -168,11 +218,3 @@ service akmd /system/bin/akmd8962
     class main
     user root
     oneshot
-
-service dhcp-service /system/bin/netcfg wlan0 dhcp
-    class main
-    oneshot
-
-on property:dev.bootcomplete=1
-    stop dhcp-service
-    start dhcp-service
