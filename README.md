@@ -1,14 +1,14 @@
-CyanogenMod 10.1 device configuration for ZTE Skate.
+CyanogenMod 11.0 device configuration for ZTE Skate.
 
 How to build:
 -------------
 
 Initialize repo:
 
-    repo init -u git://github.com/androidarmv6/android.git -b cm-10.1
-    repo sync -j16
+    repo init -u git://github.com/androidarmv6/android.git -b cm-11.0
+    repo sync
 
 Compile:
 
-    . build/envsetup.sh && lunch cm_skate-userdebug
-    make bacon -j5
+    . build/envsetup.sh
+    brunch skate
