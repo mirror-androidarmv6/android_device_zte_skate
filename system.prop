@@ -7,19 +7,30 @@ ro.telephony.call_ring.delay=3000
 
 # WiFi
 wifi.interface=wlan0
-wifi.supplicant_scan_interval=15
+wifi.supplicant_scan_interval=60
 
 # Graphics
 debug.sf.hw=1
+ro.max.fling_velocity=8000
 ro.max.fling_velocity=4000
-ro.sf.lcd_density=240
+ro.sf.lcd_density=200
 ro.sf.hwrotation=180
-qemu.sf.lcd_density=240
+qemu.sf.lcd_density=200
 debug.gr.numframebuffers=3
+windowsmgr.max_events_per_sec=150
+debug.performance.tuning=1
+video.accelerate.hw=1  
+
+# Better Image & Audio Quality
+ro.media.dec.jpeg.memcap=8000000
+ro.media.enc.hprof.vid.bps=8000000
+ro.media.enc.jpeg.quality=100
 
 # USB Mass Storage
 persist.sys.usb.config=mass_storage,adb
 persist.service.adb.enable=1
+persist.service.debuggable=1
+
 # Don't set /proc/sys/vm/dirty_ratio to 0 when USB mounting
 ro.vold.umsdirtyratio=20
 
@@ -31,3 +42,12 @@ dalvik.vm.checkjni=0
 
 # zRam
 ro.zram.default=0
+
+# Experimental
+sys.mem.max_hidden_apps=4
+persist.sys.use_dithering=2
+debug.enabletr=false
+debug.hwui.render_dirty_regions=false
+debug.hwui.disable_vsync=false
+persist.sys.purgeable_assets=1
+pm.sleep_mode=1
