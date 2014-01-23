@@ -41,7 +41,6 @@ PRODUCT_COPY_FILES += \
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
         device/zte/skate/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
-        system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf \
         device/zte/skate/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
 # These are the hardware-specific features
