@@ -55,6 +55,9 @@ WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/fw_4319.bin nvram_path=/sys
 WIFI_DRIVER_MODULE_NAME := "dhd"
 WIFI_DRIVER_LOADER_REUSE := true
 
+## OTA script extras file (build/tools/releasetools)
+TARGET_OTA_EXTRAS_FILE := device/zte/skate/releasetools-extras.txt
+
 # dev:    size   erasesize  name
 # mtd0: 00500000 00020000 "recovery"
 # mtd1: 00500000 00020000 "boot"
