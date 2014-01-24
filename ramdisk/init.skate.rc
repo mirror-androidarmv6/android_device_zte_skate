@@ -199,6 +199,12 @@ service iprenew_wlan0 /system/bin/dhcpcd -n
     disabled
     oneshot
 
+service hostapd /system/bin/hostapd /data/misc/wifi/hostapd.conf
+    socket hostapd_athap0 dgram 660 wifi wifi
+    group wifi inet
+    oneshot
+    disabled
+
 service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
     class main
     disabled
