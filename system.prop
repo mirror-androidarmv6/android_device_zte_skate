@@ -7,7 +7,9 @@ ro.telephony.call_ring.delay=3000
 
 # WiFi
 wifi.interface=wlan0
-wifi.supplicant_scan_interval=60
+wifi.supplicant_scan_interval=120
+wifi.softap.interface=wl0.1
+wifi.softapconcurrent.interface=wl0.1
 
 # Graphics
 debug.sf.hw=1
@@ -34,17 +36,8 @@ persist.service.debuggable=1
 # Don't set /proc/sys/vm/dirty_ratio to 0 when USB mounting
 ro.vold.umsdirtyratio=20
 
-# Dalviks
-dalvik.vm.dexopt-data-only=1
-dalvik.vm.execution-mode=int:jit
-dalvik.vm.dexopt-flags=v=a,o=v,m=y,u=y
-dalvik.vm.checkjni=0
-
-# zRam
-ro.zram.default=0
-
 # Experimental
-sys.mem.max_hidden_apps=4
+sys.mem.max_hidden_apps=10
 persist.sys.use_dithering=2
 debug.enabletr=false
 debug.hwui.render_dirty_regions=false
