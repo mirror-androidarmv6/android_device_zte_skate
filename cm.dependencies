@@ -16,6 +16,10 @@
    "target_path": "vendor/qcom/msm7x27",
    "branch": "cm-11.0"
  }, {
+   "repository": "android_vendor_google",
+   "target_path": "vendor/google",
+   "branch": "cm-11.0"
+ },
    "repository": "proprietary_vendor_zte",
    "target_path": "vendor/zte",
    "branch": "cm-11.0"

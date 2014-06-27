@@ -15,3 +15,28 @@
 /dev/akm8962_aot     0777   system    system
 /dev/akm8962_dev     0777   system    system
 /dev/ttyHS0          0660   bluetooth net_bt_stack
+/dev/uinput          0660	system    bluetooth
+
+# video encoder on 720p-enabled 8k targets
+/dev/pmem_venc            0660   system     audio
+/dev/msm_vidc*            0660   system     graphics
+
+# sysfs properties
+/sys/devices/virtual/input/input*   enable      0660  root   input
+/sys/devices/virtual/input/input*   poll_delay  0660  root   input
+
+# permissions for audio
+/dev/msm_amrnb            0660  system       audio
+/dev/msm_amrwb            0660  system       audio
+/dev/msm_aac*             0660  system       audio
+/dev/msm_qcelp            0660  system       audio
+/dev/msm_evrc             0660  system       audio
+/dev/msm_fm               0660  system       audio
+/dev/msm_acdb             0660  system       audio
+/dev/msm_wma              0660  system       audio
+/dev/msm_wmapro           0660  system       audio
+/dev/msm_qcelp_in         0660  system       audio
+/dev/msm_evrc_in          0660  system       audio
+/dev/msm_preproc_ctl      0660  system       audio
+/dev/msm_a2dp_in          0640  system       audio
+/dev/msm_amrnb_in         0640  system       audio

@@ -1,0 +1,21 @@
+# swapart - swap artist
+service swapart /system/bin/sh /system/bin/swapart
+    class main
+    user root
+    group root
+    oneshot
+
+# swap
+on property:persist.sys.swap=*
+    setprop persist.sys.swapart swap
+    start swapart
+
+# swap priority
+on property:persist.sys.swap_pri=*
+    setprop persist.sys.swapart swap
+    start swapart
+
+# ensure that customization are enabled upon boot
+on property:sys.boot_completed=1
+    setprop persist.sys.swapart bootcheck
+    start swapart

@@ -16,10 +16,10 @@
 
 # Define BOARD_HAVE_BLUETOOTH_BLUEZ before device/qcom/msm7x27/BoardConfigCommon.mk
 # Bluetooth
-# BOARD_HAVE_BLUETOOTH_BLUEZ := true
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/zte/skate/bluetooth
+BOARD_BLUEDROID_VENDOR_CONF := device/zte/skate/bluetooth/libbt_vndcfg.txt
 
 # Use the non-open-source parts, if they're present
 include device/zte/msm7x27-common/BoardConfigCommon.mk
@@ -35,16 +35,19 @@ TARGET_OTA_ASSERT_DEVICE := skate
 
 # Graphics
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
-TARGET_DOESNT_USE_FENCE_SYNC := true
 TARGET_QCOM_HDMI_OUT := false
 TARGET_QCOM_LEGACY_OMX := true
 BOARD_EGL_NEEDS_LEGACY_FB := true
 TARGET_NO_HW_VSYNC := false
+TARGET_DOESNT_USE_FENCE_SYNC := true
+TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 COMMON_GLOBAL_CFLAGS += -DANCIENT_GL
-COMMON_GLOBAL_CFLAGS += -DREFRESH_RATE=60
+COMMON_GLOBAL_CFLAGS += -DREFRESH_RATE=60 -DQCOM_MISSING_PIXEL_FORMATS
 
 # Wifi
 WPA_SUPPLICANT_VERSION := VER_0_8_X
+USE_LEGACY_SOFTAP := true
+BOARD_WEXT_NO_COMBO_SCAN := true
 BOARD_WLAN_DEVICE := bcmdhd
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
@@ -54,6 +57,9 @@ WIFI_DRIVER_FW_PATH_STA := "/system/etc/fw_4319_apsta.bin"
 WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/fw_4319.bin nvram_path=/system/etc/nv_4319.txt iface_name=wlan"
 WIFI_DRIVER_MODULE_NAME := "dhd"
 WIFI_DRIVER_LOADER_REUSE := true
+
+# Touchscreen
+BOARD_USE_LEGACY_TOUCHSCREEN := true
 
 ## OTA script extras file (build/tools/releasetools)
 TARGET_OTA_EXTRAS_FILE := device/zte/skate/releasetools-extras.txt
