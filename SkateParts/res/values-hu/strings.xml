@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-        <string name="app_name">ZTE Skate beállítások</string>
+        <string name="app_name">SkateParts</string>
         <string name="prox_calibration_title_head">Proximity szenzor kalibráció</string>
         <string name="prox_calibration_summary_head">Kalibráció alatt ne tegyen semmit a képernyő tetejének közelébe!</string>
         <string name="prox_display_title_head">Proximity szenzor adatok</string>
