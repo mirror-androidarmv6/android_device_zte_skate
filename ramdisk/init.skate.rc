@@ -1,51 +1,112 @@
 import init.skate.usb.rc
+import init.swapart.rc
 
+###################
+## 1: EARLY-INIT ##
+###################
 on early-init
 
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
+    # Moar bootspeed!
+    write /sys/block/mtdblock0/queue/scheduler noop
+    write /sys/block/mtdblock1/queue/scheduler noop
+    write /sys/block/mtdblock2/queue/scheduler noop
+    write /sys/block/mmcblk0/queue/scheduler noop
+
+#############
+## 2: INIT ##
+#############
 on init
-   
+
     # sdcard
     mkdir /storage 0050 root sdcard_r
     mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
     mkdir /storage/sdcard0 0700 root root
+    mkdir /storage/usbdisk0 0700 root root
 
     # symlink
     symlink /storage/sdcard0 /mnt/sdcard
     symlink /storage/sdcard0 /sdcard
+    symlink /storage/usbdisk0 /mnt/usbdisk
+    symlink /storage/usbdisk0 /usbdisk
     export EXTERNAL_STORAGE /storage/sdcard0
+    export SECONDARY_STORAGE /storage/usbdisk0
 
     # sd-ext
     mkdir /sd-ext 0771 system system
     export SD_EXT_DIRECTORY /sd-ext
 
+    # download
+    export DOWNLOAD_CACHE /data/download
+
+#################
+## 3: EARLY-FS ##
+#################
+## on early-fs
+
+
+######################
+## 4: on EARLY-BOOT ##
+######################
+on early-boot
+
+    # set RLIMIT_MEMLOCK to 64MB
+    setrlimit 8 67108864 67108864
+
+###########
+## 5: FS ##
+###########
 on fs
+
     # Mount /system rw first to give the filesystem a chance to save a checkpoint
     mount yaffs2 mtd@system /system
     mount yaffs2 mtd@system /system ro remount
     mount yaffs2 mtd@userdata /data nosuid nodev
     mount yaffs2 mtd@cache /cache nosuid nodev
-    
+
     # zRAM
     swapon_all /fstab.skate
 
-   # cutils/installd wants a media dir
+    # cutils/installd wants a media dir
     mkdir /data/media 0770 system system
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
+################
+## 6: POST-FS ##
+################
+on post-fs
 
+    # nv
+    mkdir /data/nv
+    chown system system /data/nv
+    chmod 0711 /data/nv
+
+    mkdir /cache/download 0771 system cache
+    mkdir /data/download 0771 system cache
+    mkdir /data/local/download 0771 system cache
+
+#####################
+## 7: POST-FS-DATA ##
+#####################
 on post-fs-data
+
     # Create the directories used by the Wireless subsystem
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     mkdir /data/misc/dhcp 0770 dhcp dhcp
-    
+
     # zRAM
     write /proc/sys/vm/page-cluster 0
 
+    #Create directory for hostapd
+    mkdir /data/hostapd 0770 system wifi
+
+#############
+## 8: BOOT ##
+#############
 on boot
 
-# Setup boostpulse
+    # Setup boostpulse
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
 
     chown system system /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
@@ -62,51 +123,41 @@ on boot
     chmod 0666 /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
     chmod 0666 /sys/devices/system/cpu/cpufreq/ondemand/down_differential
 
-# cpufreq configurations
+    # cpufreq configurations
     write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 500000
     write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold 90
     write /sys/devices/system/cpu/cpufreq/ondemand/down_threshold 30
-# Kernel Samepage Merging (KSM)
+
+    # Kernel Samepage Merging (KSM)
     write /sys/kernel/mm/ksm/sleep_millisecs 4000
     write /sys/kernel/mm/ksm/pages_to_scan 256
     write /sys/kernel/mm/ksm/run 1
 
-# Setup charging
+    # Setup charging
     chown system system /sys/module/msm_battery/parameters/usb_chg_enable
 
-# Setup bluetooth
-    chown bluetooth net_bt_stack /sys/module/bluetooth_power/parameters/power
-    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
-    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
-
-    # BT Sleep
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/asleep
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwake
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/hostwake
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/proto
-    chmod 0660 /proc/bluetooth/sleep/btwake
-    chmod 0660 /proc/bluetooth/sleep/lpm
-    chmod 0660 /proc/bluetooth/sleep/btwrite
+    # bluetooth
+    chmod 0660 /dev/ttyHS0
     chmod 0660 /proc/bluetooth/sleep/proto
-
-    chown system net_bt_stack /sys/module/sco/parameters/disable_esco
-    chmod 0660 /sys/module/bluetooth_power/parameters/power
     chmod 0660 /sys/class/rfkill/rfkill0/state
-    chown bluetooth net_bt_stack /dev/ttyHS0
-    chmod 0666 /dev/ttyHS0
-    chown bluetooth net_bt_stack /sys/devices/platform/msm_serial_hs.0/clock
+    chmod 0660 /sys/class/rfkill/rfkill0/type
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
+    chown bluetooth net_bt_stack /dev/ttyHS0
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/proto
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
+    chown bluetooth net_bt_stack /sys/devices/platform/msm_serial_hs.0/clock
 
-    mkdir /data/local
-    chmod 0777 /data/local
-    chown radio shell /data/local
-    mkdir /data/local/tmp
-    chmod 0777 /data/local/tmp
-    chown radio shell /data/local/tmp
+    # bluetooth LPM
+    chmod 0220 /proc/bluetooth/sleep/lpm
+    chmod 0220 /proc/bluetooth/sleep/btwrite
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
 
-# Lights
+    # turn off bluetooth at startup
+    write /sys/class/rfkill/rfkill0/state 0
+
+    # Lights
     chown system system /sys/class/leds/green/blink
     chown system system /sys/class/leds/green/brightness
     chown system system /sys/class/leds/green/grpfreq
@@ -120,7 +171,7 @@ on boot
     chown system system /sys/class/leds/amber/grpfreq
     chown system system /sys/class/leds/amber/grppwm
 
-# SD card polling
+    # SD card polling
     chown system system /sys/module/g_android/parameters/product_id
     chown system system /sys/devices/platform/msm_sdcc.1/polling
     chown system system /sys/devices/platform/msm_sdcc.2/polling
@@ -129,11 +180,11 @@ on boot
     chown system system /sys/devices/platform/android_usb/composition
     chown system system /sys/devices/platform/android_usb/remote_wakeup
 
-# Enable MASS storage on SDCARD
-#    write /sys/devices/platform/mass_storage/lun0/file /dev/block/mmcblk0p1
-#    write /sys/bus/platform/drivers/msm_sdcc/msm_sdcc.1/polling 1
+    # Enable MASS storage on SDCARD
+    write /sys/devices/platform/mass_storage/lun0/file /dev/block/mmcblk0p1
+    write /sys/bus/platform/drivers/msm_sdcc/msm_sdcc.1/polling 1
 
-# wifi
+    # Wifi
     mkdir /data/misc 01771 system misc
     mkdir /data/misc/wifi 0770 system wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
@@ -142,37 +193,34 @@ on boot
     chown dhcp dhcp /data/misc/dhcp
     mkdir /data/system 0775 system system
 
-setprop vold.post_fs_data_done 1
+    setprop vold.post_fs_data_done 1
 
-service qmuxd /system/bin/qmuxd 
+    # To prevent out of order acknowledgements from making
+    # connection tracking to treat them as not belonging to
+    # the connection they belong to.
+    # Otherwise, a weird issue happens in which some long
+    # connections on high-throughput links get dropped when
+    # an ack packet comes out of order
+    write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
+
+########################
+## 10: BOOT COMPLETED ##
+########################
+
+on property:sys.boot_completed=1
+    # Override Kernel Samepage Merging (KSM) values
+    write /sys/kernel/mm/ksm/sleep_millisecs 4000
+    write /sys/kernel/mm/ksm/pages_to_scan 256
+
+#############################################################################
+### S E R V I C E S                                                        ##
+#############################################################################
+service qmuxd /system/bin/qmuxd
     class main
     user radio
 
-on property:init.svc.bluetoothd=running
-    write /sys/devices/virtual/bluetooth/hci0/idle_timeout 7000
-    start abtfilt
-
-on property:init.svc.bluetoothd=stopped
-    stop abtfilt
-
-service hci_qcomm_init /system/bin/log -t qcom-bluetooth -p i "hci_qcomm_init service requested"
-    class main
-    user bluetooth
-    group bluetooth net_bt_admin net_bt_stack
-    disabled
-    oneshot
-
-service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
-    class main
-    user bluetooth
-    group qcom_oncrpc bluetooth net_bt_admin net_bt_stack
-    disabled
-    oneshot
-
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd_wlan0
-
-# WPA SETTINGS
 
 service wpa_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211,wext -c/data/misc/wifi/wpa_supplicant.conf \
@@ -183,9 +231,11 @@ service wpa_supplicant /system/bin/wpa_supplicant \
     disabled
     oneshot
 
-# SDcard daemon
-
 service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
+    class late_start
+    disabled
+
+service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdisk /storage/usbdisk
     class late_start
     disabled
 

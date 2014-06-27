@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-        <string name="app_name">Ajustes ZTE Skate</string>
+        <string name="app_name">SkateParts</string>
         <string name="prox_calibration_title_head">Calibrado de sensor de proximidad</string>
         <string name="prox_calibration_summary_head">No poner nada encima de la pantalla mientras se esté calibrando</string>
         <string name="prox_display_title_head">Datos de proximidad del sensor</string>
