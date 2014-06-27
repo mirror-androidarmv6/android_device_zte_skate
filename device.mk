@@ -27,11 +27,16 @@ PRODUCT_COPY_FILES += \
         device/zte/skate/fstab.skate:root/fstab.skate \
         device/zte/skate/ramdisk/init.skate.rc:root/init.skate.rc \
         device/zte/skate/ramdisk/init.skate.usb.rc:root/init.skate.usb.rc \
-        device/zte/skate/ramdisk/ueventd.skate.rc:root/ueventd.skate.rc \
+        device/zte/skate/ramdisk/init.recovery.skate.rc:root/init.recovery.skate.rc \
+	device/zte/skate/ramdisk/ueventd.skate.rc:root/ueventd.skate.rc \
+        device/zte/skate/prebuilt/swapart:system/bin/swapart \
+	device/zte/skate/prebuilt/01frandom:system/etc/init.d/01frandom \
         device/zte/skate/prebuilt/skate_keypad.kl:/system/usr/keylayout/skate_keypad.kl \
+        device/zte/skate/prebuilt/Fts-touchscreen.idc:system/usr/idc/Fts-touchscreen.idc \
+        device/zte/skate/prebuilt/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc \
         device/zte/skate/prebuilt/synaptics-rmi4-ts.idc:system/usr/idc/synaptics-rmi4-ts.idc \
         device/zte/skate/prebuilt/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc
-
+		
 # WiFi
 PRODUCT_COPY_FILES += \
         device/zte/skate/firmware/fw_4319.bin:system/etc/fw_4319.bin \
@@ -45,6 +50,15 @@ PRODUCT_COPY_FILES += \
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
-         frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-         frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-         frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
+	frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
+     	frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
+     	frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+	frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+	frameworks/native/data/etc/android.hardware.touchscreen.xml:system/etc/permissions/android.hardware.touchscreen.xml \
+	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.xml \
+     	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+     	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.hardware.microphone.xml \
+     	frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+     	frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+     	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml

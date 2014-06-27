@@ -22,6 +22,9 @@
 # lines, full and toro, hence its name.
 #
 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/telephony.mk)
+
 # Inherit from skate device
 $(call inherit-product, device/zte/skate/device.mk)
 
